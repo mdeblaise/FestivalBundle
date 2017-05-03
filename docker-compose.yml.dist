@@ -1,0 +1,35 @@
+# This container is specific to the application.
+# It contains configuration and data for other containers.
+data:
+    image: busybox
+    container_name: mmc-festival_data
+    volumes:
+        - .:/srv
+        - ./docker/.home-developer:/home/developer
+        - /var/lib/mysql
+
+console:
+    image: meuhmeuhconcept/php-console
+    container_name: mmc-festival_console
+    volumes_from:
+        - data
+    volumes:
+        - $SSH_AUTH_SOCK:/tmp/agent.sock
+    env_file:
+        - ./docker/docker-compose.env
+    links:
+        - database
+    environment:
+        - DNSDOCK_IMAGE=console
+    working_dir: /srv
+
+database:
+    image: mariadb:10.0
+    container_name: mmc-festival_database
+    volumes_from:
+        - data
+    env_file:
+        - ./docker/docker-compose.env
+    environment:
+        - DNSDOCK_IMAGE=db
+    restart: always
