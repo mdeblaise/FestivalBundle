@@ -21,6 +21,16 @@ vendor/autoload.php: ## Install composer dependencies
 unitTest: vendor/autoload.php
 	${bin_dir}/phpunit --configuration .
 
+setupTestDatabase: vendor/autoload.php
+	scripts/setupTestDb.sh
+
+behat_options=-vv --strict --stop-on-failure --format=progress
+
+functionalTest: setupTestDatabase
+	${bin_dir}/behat ${behat_options}
+
+test: unitTest functionalTest ## Launch tests
+
 cs-check: vendor/autoload.php ## Check PHP CS
 	${bin_dir}/php-cs-fixer --version
 	${bin_dir}/php-cs-fixer fix -v --diff --dry-run
