@@ -18,6 +18,9 @@ console: ## Connect to console container
 vendor/autoload.php: ## Install composer dependencies
 	composer install
 
+unitTest: vendor/autoload.php
+	${bin_dir}/phpunit --configuration .
+
 help:
 	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort | awk 'BEGIN {FS = ":.*?## "}; {printf "\033[36m%-30s\033[0m %s\n", $$1, $$2}'
 
