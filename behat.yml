@@ -1,0 +1,72 @@
+default:
+    extensions:
+        Behat\Symfony2Extension:
+            kernel:
+                env: "test"
+                debug: "true"
+                path: Features/Fixtures/Project/app/AppKernel.php
+                bootstrap: Features/Fixtures/Project/app/bootstrap.php
+        Knp\FriendlyContexts\Extension:
+        Behat\MinkExtension:
+            sessions:
+                my_session:
+                    symfony2: ~
+    suites:
+        dateReference:
+            type: symfony_bundle
+            bundle: MMCFestivalBundle
+            contexts:
+                - MMC\FestivalBundle\Features\Context\DateContext:
+                    dateReference: '@mmc_festival.DateReference'
+            paths:
+                - Features/dateReference.feature
+
+        actuality:
+            type: symfony_bundle
+            bundle: MMCFestivalBundle
+            contexts:
+                - MMC\FestivalBundle\Features\Context\ActualityContext:
+                    chainLister: '@mmc_festival.ChainLister.Actuality'
+                    fakeLister: '@mmc_festival.FakeLister.Actuality'
+                    requestFactory: '@mmc_festival.RequestFactory.Actuality'
+                - MMC\FestivalBundle\Features\Context\DateContext:
+                    dateReference: '@mmc_festival.DateReference'
+                - Knp\FriendlyContexts\Context\EntityContext
+            paths:
+                - Features/actuality.feature
+
+        guest:
+            type: symfony_bundle
+            bundle: MMCFestivalBundle
+            contexts:
+                - MMC\FestivalBundle\Features\Context\GuestContext:
+                    chainLister: '@mmc_festival.ChainLister.Guest'
+                    fakeLister: '@mmc_festival.FakeLister.Guest'
+                    requestFactory: '@mmc_festival.RequestFactory.Guest'
+                - Knp\FriendlyContexts\Context\EntityContext
+            paths:
+                - Features/guest.feature
+
+        activity:
+            type: symfony_bundle
+            bundle: MMCFestivalBundle
+            contexts:
+                - MMC\FestivalBundle\Features\Context\ActivityContext:
+                    chainLister: '@mmc_festival.ChainLister.Activity'
+                    fakeLister: '@mmc_festival.FakeLister.Activity'
+                    requestFactory: '@mmc_festival.RequestFactory.Activity'
+                - Knp\FriendlyContexts\Context\EntityContext
+            paths:
+                - Features/activity.feature
+
+        exponent:
+            type: symfony_bundle
+            bundle: MMCFestivalBundle
+            contexts:
+                - MMC\FestivalBundle\Features\Context\ExponentContext:
+                    chainLister: '@mmc_festival.ChainLister.Exponent'
+                    fakeLister: '@mmc_festival.FakeLister.Exponent'
+                    requestFactory: '@mmc_festival.RequestFactory.Exponent'
+                - Knp\FriendlyContexts\Context\EntityContext
+            paths:
+                - Features/exponent.feature

@@ -1,0 +1,49 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+
+framework:
+    secret: ThisIsVerySecret!
+    test: ~
+    validation:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    router:
+        resource: ~
+        strict_requirements: ~
+    form: ~
+
+services:
+    mailer:
+        class: Swift_Mailer
+
+tours_evenements_festival:
+    current_edition: '2017'
+    path: ~
+    google_analytics: ~
+    carousel: ~
+    fake_actualities: ~
+
+doctrine:
+    dbal:
+        driver:   pdo_mysql
+        host:     database
+        port:     null
+        dbname:   jtf2017_test
+        user:     root
+        password: jtf2017
+        charset:  UTF8
+        server_version: 10.0
+        types:
+            uuid: 'Ramsey\Uuid\Doctrine\UuidType'
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/data/data.db3"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #     path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true

@@ -1,0 +1,10 @@
+parameters:
+    mmc_festival.maxPerPage.Activity: 15
+    mmc_festival.maxPerPage.Actuality: 7
+    mmc_festival.maxPerPage.Exponent: 200
+    mmc_festival.maxPerPage.Guest: 15
+
+    mmc_festival.supportLimit.Exponent: 1
+    mmc_festival.supportLimit.Activity: 1
+    mmc_festival.supportLimit.Actuality: 1
+    mmc_festival.supportLimit.Guest: 1
