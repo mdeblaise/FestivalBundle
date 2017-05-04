@@ -1,0 +1,19 @@
+.card-valid {
+    display:none;
+    position: relative;
+}
+
+.card-draft {
+    display: block;
+    position: relative;
+}
+
+.card-without-draft>.card-valid {
+    display: block;
+}
+
+.card-toolbox {
+    position: absolute;
+    top: 0;
+    right: 0;
+}

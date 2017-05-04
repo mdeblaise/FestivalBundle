@@ -1,0 +1,42 @@
+{% extends 'MMCFestivalBundle::layout.html.twig' %}
+
+{% block submenu %}
+    <div class="navbar-header" data-toggle="collapse" data-target="#sousmenu">
+        <button type="button" class="navbar-toggle collapsed navbar-toggle-center" data-toggle="collapse" data-target="#sousmenu" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </button>
+        <a class="navbar-brand visible-xs-inline" href="#">{{ 'main.title'|trans({}, 'guest') }}</a>
+    </div>
+    <div class="collapse navbar-collapse navbar-nav-justified niveau-2" id="sousmenu">
+        <ul class="nav nav-justified">
+            {% for univers in getUniversCodes() %}
+                <li class="{{ currentPage.submenu == univers ? 'active' : '' }}">
+                    <a href="{{ path('mmc_festival_guest_univers', {univers: univers}) }}">{{ univers|trans({}, 'univers') }}</a>
+                </li>
+            {% endfor %}
+            <li class="{{ currentPage.submenu == 'of_honor' ? 'active' : '' }}">
+                <a href="{{ path('mmc_festival_guest_of_honor') }}">
+                    <span class="visible-sm-inline">{{ 'guestOfHonor.short'|trans({}, 'guest') }}</span>
+                    <span class="hidden-sm">{{ 'guestOfHonor'|trans({}, 'guest') }}</span>
+                </a>
+            </li>
+            <li class="{{ currentPage.submenu == '' ? 'active' : '' }}">
+                <a href="{{ path('mmc_festival_guest') }}">
+                    <span class="visible-sm-inline">{{ 'allGuest.short'|trans({}, 'guest') }}</span>
+                    <span class="hidden-sm">{{ 'allGuest'|trans({}, 'guest') }}</span>
+                </a>
+            </li>
+            {% for day in getDays() %}
+                {% set translated_day = day.day|trans({}, 'schedule')|lower %}
+                <li class="{{ currentPage.submenu == translated_day ? 'active' : '' }}">
+                    <a href="{{ path('mmc_festival_guest_day', {day: translated_day}) }}">{{ translated_day|title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock submenu %}
+
+{% block title_content %}
+    {{ 'main.title'|trans({}, 'guest') }}
+{% endblock title_content %}

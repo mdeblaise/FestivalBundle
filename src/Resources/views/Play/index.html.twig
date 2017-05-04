@@ -1,0 +1,103 @@
+{% extends "MMCFestivalBundle::layout.html.twig" %}
+
+{% trans_default_domain 'play' %}
+
+{% block body %}
+    <section id="main-content" class="col-md-12 no-pl" >
+    {% block content %}
+    <h1 class="art-title text-center">
+        Concours - Festival
+    </h1>
+
+    {% if app.session.flashBag.has('play') %}
+        {% for play_register in app.session.flashBag.get('play') %}
+            <div class="alert alert-success" role="alert">
+                {{ play_register }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+        {% endfor %}
+    {% endif %}
+
+    <form action="{{ path('mmc_festival_play') }}" method="post" class="container-fluid ">
+        {{ form_widget(form._token) }}
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.firstname) }}
+            </div>
+            <div class="col-md-6">
+                {{ form_row(form.lastname) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-6">
+                {{ form_row(form.email) }}
+            </div>
+            <div class="col-md-3">
+                {{ form_row(form.phone) }}
+            </div>
+            <div class="col-md-3">
+                {{ form_row(form.departmentNumber) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                {{ form_row(form.receiveInformation) }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4 col-sm-6 col-sm-offset-3">
+                <input type="submit" class="btn btn-festival btn-block" value="Envoyer" />
+            </div>
+        </div>
+        <p>{{ 'submit.before'|trans({} ,'play')|raw }}</p>
+
+        {% block contestRules %}
+            {% block contestRules_link %}
+                <a data-toggle="modal" data-target="#myModal">
+                    {{ 'contestRules.link.text'|trans({} ,'play') }}
+                </a>
+            {% endblock contestRules_link %}
+
+            {% block contestRules_link_text_after %}
+            {% endblock contestRules_link_text_after %}
+
+            <!-- Modal -->
+            <div class="modal fade bs-example-modal-lg" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            {% block contestRules_modal_title %}
+                                <h3 class="modal-title" id="myModalLabel">
+                                    {{ 'contestRules.modal.title'|trans({} ,'play') }}
+                                    {% block contestRules_modal_title_event %}{% endblock contestRules_modal_title_event %}
+                                </h3>
+                            {% endblock contestRules_modal_title %}
+                            {% block contestRules_modal_subtitle %}{% endblock contestRules_modal_subtitle %}
+                        </div>
+                        <div class="modal-body">
+                            {% block contestRules_modal_body %}...{% endblock contestRules_modal_body %}
+                        </div>
+                        {% block contestRules_modal_footer %}
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">
+                                    {{ 'contestRules.modal.close'|trans({} ,'play') }}
+                                </button>
+                            </div>
+                        {% endblock contestRules_modal_footer %}
+                    </div>
+                </div>
+            </div>
+        {% endblock contestRules %}
+
+    </form>
+    {% endblock content %}
+{% endblock body %}
+
+{% block menu %}
+{% endblock menu %}
+
+{% block navbar %}
+{% endblock navbar %}

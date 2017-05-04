@@ -1,0 +1,46 @@
+{% extends "MMCFestivalBundle:Default:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+    <div id="presse" class="row">
+
+        {% block press_poster %}{% endblock press_poster %}
+
+        <div class="col-sm-6 br-rouge">
+            {% block press_infos %}
+                <h2 class="art-title">{{ 'information.title'|trans({}, 'press') }}</h2>
+                <p class="txt_style_1">{{ 'information.text'|trans({}, 'press')|raw }}</p>
+                {% block press_infos_logo %}{% endblock press_infos_logo %}
+            {% endblock press_infos %}
+
+            {% block press_media %}
+                <h2 class="art-title">{{ 'media.title'|trans({}, 'press') }}</h2>
+                <p class="txt_style_1">{{ 'media.text'|trans({}, 'press')|raw }}</p>
+                {% block press_media_file %}{% endblock press_media_file %}
+            {% endblock press_media %}
+        </div>
+
+        <div class="col-sm-6">
+            {% block press_accreditation %}
+                <h2 class="art-title">{{ 'accreditation.title'|trans({}, 'press') }}</h2>
+                <p class="txt_style_1">{{ 'accreditation.text'|trans({}, 'press') }}</p>
+                <p class="text-center">
+                    <a href="{{ path('mmc_festival_press_contact') }}">
+                        {% block press_accreditation_logo %}{% endblock press_accreditation_logo %}
+                    </a>
+                </p>
+            {% endblock press_accreditation %}
+
+            {% block press_release %}
+                <h2 class="art-title">{{ 'press.title'|trans({}, 'press') }}</h2>
+                <p class="txt_style_1">{{ 'press.text'|trans({}, 'press') }}</p>
+                {% block press_release_file %}{% endblock press_release_file %}
+            {% endblock press_release %}
+        </div>
+
+    </div>
+{% endblock content %}
+
+{% block title_content %}
+    Presse
+{% endblock title_content %}

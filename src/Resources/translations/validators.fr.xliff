@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="availabilities_have_to_be_set">
+                <source>availabilities_have_to_be_set</source>
+                <target>Vous devez nous indiquer au moins une disponibilité.</target>
+            </trans-unit>
+            <trans-unit id="univers_have_to_be_set">
+                <source>univers_have_to_be_set</source>
+                <target>Choisissez au moins un centre d'intérêt.</target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

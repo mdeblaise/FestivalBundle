@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="information.title">
+                <source>information.title</source>
+                <target>Informations</target>
+            </trans-unit>
+            <trans-unit id="information.text">
+                <source>information.text</source>
+                <target><![CDATA[
+                    Pour toutes demandes sur notre festival, merci de contacter notre attachée de presse :<br />
+                    Charlotte Naudin :<br />
+                    <a href="mailto:naudin.charlotte@gmail.com" >naudin.charlotte@gmail.com</a>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="media.title">
+                <source>media.title</source>
+                <target>Médias</target>
+            </trans-unit>
+            <trans-unit id="media.text">
+                <source>media.text</source>
+                <target><![CDATA[
+                    Téléchargez l'affiche du Festival au format portrait ou paysage.<br />
+                    Les photos-souvenirs du salon sont également à disposition.<br />
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="accreditation.title">
+                <source>accreditation.title</source>
+                <target>Accréditations</target>
+            </trans-unit>
+            <trans-unit id="accreditation.text">
+                <source>accreditation.text</source>
+                <target>Pour les accréditations presse, merci de cliquer ici pour envoyer votre demande.</target>
+            </trans-unit>
+            <trans-unit id="press.title">
+                <source>press.title</source>
+                <target>Communiqués de presse</target>
+            </trans-unit>
+            <trans-unit id="press.text">
+                <source>press.text</source>
+                <target>Suivez les news du Festival de septembre à février 2017 !</target>
+            </trans-unit>
+            <trans-unit id="form_civility">
+                <source>form_civility</source>
+                <target>Civilité</target>
+            </trans-unit>
+            <trans-unit id="form_firstname">
+                <source>form_firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="form_lastname">
+                <source>form_lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="form_media">
+                <source>form_media</source>
+                <target>Média</target>
+            </trans-unit>
+            <trans-unit id="form_email">
+                <source>form_email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="form_phone">
+                <source>form_phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="form_address">
+                <source>form_address</source>
+                <target>Adresse</target>
+            </trans-unit>
+            <trans-unit id="form_postalCode">
+                <source>form_postalCode</source>
+                <target>Code postal</target>
+            </trans-unit>
+            <trans-unit id="form_city">
+                <source>form_city</source>
+                <target>Ville</target>
+            </trans-unit>
+            <trans-unit id="form_message">
+                <source>form_message</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="contact.title">
+                <source>contact.title</source>
+                <target>Contact Presse</target>
+            </trans-unit>
+            <trans-unit id="contact.first.subtitle">
+                <source>contact.first.subtitle</source>
+                <target>Pour toute demande spécifique, merci de remplir le formulaire ci-dessous :</target>
+            </trans-unit>
+            <trans-unit id="contact.second.subtitle">
+                <source>contact.second.subtitle</source>
+                <target>N'hésitez pas à consulter la rubrique “Presse” pour y retrouver les communiqués de presse, les images des affiches de ce salon...</target>
+            </trans-unit>
+            <trans-unit id="confirm.confirmation">
+                <source>confirm.confirmation</source>
+                <target>Votre demande a bien été envoyée !</target>
+            </trans-unit>
+            <trans-unit id="confirm.after">
+                <source>confirm.after</source>
+                <target>Nous vous recontacterons dans les plus brefs délais.</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

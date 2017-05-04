@@ -1,0 +1,50 @@
+{% extends "MMCFestivalBundle:Default:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+        <h1 class="art-title">
+            Règles de sécurité
+        </h1>
+        <ul class="list-unstyled">
+            <li>Afin de vous garantir un accueil sûr et serein lors de la 3ème édition du {{ event_name }}, les dispositions suivantes ont été prises :</li>
+        </ul>
+        <ul class="list-unstyled">
+            <li><h4><b>Répliques d'armes :</b></h4></li>
+            <li>Compte tenu de l’état d’urgence, les répliques d'armes seront autorisées à l'intérieur du Salon sous certaines conditions :</li>
+            <ul>
+                <li>Toutes les armes faites maison en mousse, en worbla, en bois (léger) seront autorisées.</li>
+                <li>Les répliques d'airsoft et autres répliques d’armes seront autorisées MAIS elles devront être présentées à l’agent de sécurité, totalement VIDES (pas de billes, pas de chargeur) et seront MARQUÉES à l'entrée du Salon.</li>
+                <li>Les katanas NE SERONT PAS autorisés et ceux achetés durant le Salon devront <font color="#d80c01"><strong>rester scellés.</strong></font></li>
+                <li><font color="#d80c01"><strong>Toutes les armes blanches (katanas, épées, shurikens…) ou répliques d’armes blanches seront interdites sur le Salon même non tranchantes et non pointues.</strong></font></li>
+            </ul>
+            <li>Les agents de sécurité pourront vérifier, à tout moment, la non-dangerosité de chaque réplique d'arme apportée sur le Salon à l'entrée de celui-ci ou à tout moment durant les trois jours.</li>
+        </ul>
+        <div class="alert alert-danger">
+            <b><p>Concernant les répliques d’armes achetées sur le {{ event_name }}, le dispositif suivant sera pratiqué :</p>
+            <ul>
+                <li>Elles seront obligatoirement vendues dans des cartons fermés et scellés.</li>
+                <li>Elles ne pourront pas être déballées dans l’enceinte du Salon, ni dans le périmètre de sécurité extérieur à cette enceinte.</li>
+            </ul>
+            <p>Les contrevenants se verront confisquer définitivement leur(s) achat(s).</p>
+            </b>
+        </div>
+        <ul class="list-unstyled">
+            <li><h4><b>Sécurité :</b></h4></li>
+            <li>Des filtrages et contrôles d’accès extérieur/intérieur seront assurés par des agents de sécurité dès l’entrée du Centre de Congrès VINCI.</li>
+            <li>Les agents de sécurité seront présents aux abords du bâtiment et à l’intérieur de celui-ci. Ils effectueront une fouille systématique des sacs et procéderont également à des palpations sur les personnes avant qu’elles puissent accéder au Salon.</li>
+        </ul>
+        <div class="alert alert-danger">
+            <strong><u>Attention:</u><br/>
+            Toute personne qui refuserait d’être fouillée à l’entrée du Salon par les agents de sécurité sera reconduite au-delà du périmètre de sécurité piéton, même si elle est munie d’un billet d’entrée.</strong>
+            </div>
+        <ul class="list-unstyled">
+            <li><h4><b>Sécurité extérieure :</b></h4></li>
+            <li>Nous tenons à vous rappeler, au vu des événements récents, qu'il est interdit et dangereux de se promener dans la rue avec une réplique d'arme visible.</li>
+            <li>Nous vous conseillons donc de garder vos répliques et accessoires rangés dans un sac jusqu'à votre arrivée sur le Salon.</li>
+            <li>Nous vous rappelons par ailleurs qu’il est interdit de se promener dans la rue avec un costume masquant le visage.</li>
+        </ul>
+{% endblock content %}
+
+{% block title_content %}
+    Règles de sécurité
+{% endblock title_content %}

@@ -1,0 +1,14 @@
+<a href="{{ path('mmc_festival_activity_view', { id: activity.card.id }) }}" class="activity-link activity-participate thumbnail">
+    <div class="row">
+            <div class="col-xs-12 col-md-5">
+                <img src="{{ getResourcesPath('img_activityType') ~ activity.type ~ '.png' }}"
+                    alt="{{ getAlt('') }}"
+                    title="{{ activity.type|enum_label('MMC\\FestivalBundle\\Model\\ActivityType', 'ActivityType', false) }}"
+                />
+            </div>
+            <div class="col-md-7 art-detail hidden-xs">
+                <p class="title">{{ activity.title|truncate(40, false, '...') }}</p>
+                <p><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span>&nbsp;{{ formatDays(activity) }}</p>
+            </div>
+    </div>
+</a>

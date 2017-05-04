@@ -1,0 +1,41 @@
+<div id="carousel-{{ carouselView.name }}" class="carousel slide {{ carouselView.options.class }}"
+    data-ride="carousel"
+    data-interval="{{ carouselView.options.interval }}"
+>
+    {% if carouselView.options.showIndicators %}
+        <!-- Indicators -->
+        <ol class="carousel-indicators">
+            {% for image in carouselView.images %}
+                <li data-target="#carousel-{{ carouselView.name }}" data-slide-to="{{ loop.index0 }}" {{ loop.first ? 'class="active"' : '' }}></li>
+            {% endfor %}
+        </ol>
+    {% endif %}
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner">
+        {% for image in carouselView.images %}
+        <div class="item {{ loop.first ? 'active' : ''}}">
+            {% if image.link %}
+                <a href="{{ image.link }}" target="_blank">
+            {% endif %}
+                <img src="{{ carouselView.options.imagine_filter ? image.src|imagine_filter(carouselView.options.imagine_filter) : image.src  }}" alt="{{ getAlt(image.alt) }}" title="{{ image.title }}" />
+                {% if image.caption %}
+                    <div class="carousel-caption">{{ image.caption }}</div>
+                {% endif %}
+            {% if image.link %}
+                </a>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    {% if carouselView.options.showControls %}
+        <!-- Controls -->
+        <a class="left carousel-control" href="#carousel-{{ carouselView.name }}" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+        </a>
+        <a class="right carousel-control" href="#carousel-{{ carouselView.name }}" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right"></span>
+        </a>
+    {% endif %}
+</div> <!-- Carousel -->

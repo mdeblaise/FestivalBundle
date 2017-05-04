@@ -1,0 +1,17 @@
+{% extends "MMCFestivalBundle:Default:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+    <div class="row">
+        <div class="col-sm-12">
+            <p class="text-center">
+                {% block confirm_contact_image %}
+                {% endblock confirm_contact_image %}
+            </p>
+            <h2 class="art-title text-center">{{ 'confirm.confirmation'|trans({}, 'press') }}</h2>
+            <p>
+                <div class="art-detail text-center">{{ 'confirm.after'|trans({}, 'press') }}</div>
+            </p>
+        </div>
+    </div>
+{% endblock content %}

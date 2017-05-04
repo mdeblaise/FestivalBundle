@@ -1,0 +1,54 @@
+{
+  "paths": {
+    "sources": "./src/",
+    "dist": "../public/"
+  },
+  "script": {
+    "install": {
+      "direct": {
+        "lib" : [
+          "./node_modules/jquery/dist/jquery.min.js",
+          "./node_modules/jquery-ui-dist/jquery-ui.min.js",
+          "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+          "./node_modules/bootstrap3-dialog/dist/js/bootstrap-dialog.min.js",
+          "./node_modules/bootstrap-toggle/js/bootstrap-toggle.min.js"
+        ]
+      },
+      "minify": {
+        "lib": [
+          "./node_modules/requirejs/require.js"
+        ]
+      }
+    }
+  },
+  "style": {
+    "install": {
+      "direct": [
+        "./node_modules/bootstrap/dist/css/bootstrap.min.css",
+        "./node_modules/bootstrap/dist/css/bootstrap.min.css.map",
+        "./node_modules/font-awesome/css/font-awesome.min.css",
+        "./node_modules/font-awesome/css/font-awesome.css.map",
+        "./node_modules/bootstrap3-dialog/dist/css/bootstrap-dialog.min.css",
+        "./node_modules/bootstrap-toggle/css/bootstrap-toggle.min.css",
+        "./node_modules/jquery-ui-dist/jquery-ui.min.css",
+        "./node_modules/jquery-ui-dist/jquery-ui.theme.min.css"
+      ],
+      "minify": {
+        "jquery-ui": [
+            "./node_modules/jquery-ui/themes/base/*.css"
+        ]
+      },
+      "fonts": [
+        "./node_modules/font-awesome/fonts/*",
+        "./node_modules/bootstrap/fonts/*"
+      ],
+      "images": {
+        "css/jquery-ui/images": [
+            "./node_modules/jquery-ui-dist/images/*"
+        ]
+      }
+    },
+    "concat": {
+    }
+  }
+}

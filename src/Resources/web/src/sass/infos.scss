@@ -1,0 +1,59 @@
+#opening-dammc-festival-hours {
+    padding-bottom: 20px;
+}
+
+#where-sleeping {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+#where-sleeping::before {
+    background-image: url($mmc-festival-image-path + '/infos/PICTO-LIT.png');
+}
+
+#where-sleeping-more {
+    margin-top: 20px;
+    padding-bottom: 20px;
+}
+
+#where-sleeping-more::before {
+    background-image: url($mmc-festival-image-path + '/infos/LOGO.png');
+    height: 50px;
+    margin-top: -15px;
+}
+
+#how-come {
+    margin-top: 30px;
+}
+
+#how-come::before {
+    background-image: url($mmc-festival-image-path + '/infos/sncf.png');
+}
+
+#how-come-train {
+    margin-top: 30px;
+}
+
+#how-come-train::before {
+    background-image: url($mmc-festival-image-path + '/infos/PICTO.png');
+    height: 50px;
+    margin-top: -15px;
+}
+
+#how-come-car {
+    margin-top: 30px;
+}
+
+#how-come-car::before {
+    background-image: url($mmc-festival-image-path + '/infos/LOGO-BLE-BLA-CAR.png');
+    height: 50px;
+    margin-top: 5px;
+}
+
+#security {
+    margin-top: 30px;
+}
+
+#security::before {
+    background-image: url($mmc-festival-image-path + '/securityRules/picto.jpeg');
+}

@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="Name">
+                <source>Name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="Created At">
+                <source>Created At</source>
+                <target>Date d'ajout</target>
+            </trans-unit>
+            <trans-unit id="Manage Partners List">
+                <source>Manage Partners List</source>
+                <target>Gestion de la liste des partenaires</target>
+            </trans-unit>
+            <trans-unit id="ManagePartners">
+                <source>ManagePartners</source>
+                <target>Gestion des Partenaires</target>
+            </trans-unit>
+            <trans-unit id="Partners">
+                <source>Partners</source>
+                <target>Partenaire</target>
+            </trans-unit>
+            <trans-unit id="Link">
+                <source>Link</source>
+                <target>Lien externe</target>
+            </trans-unit>
+            <trans-unit id="Logo">
+                <source>Logo</source>
+                <target>Logo</target>
+            </trans-unit>
+            <trans-unit id="Preview">
+                <source>Preview</source>
+                <target>Prévisualisation du logo</target>
+            </trans-unit>
+            <trans-unit id="Alt">
+                <source>Alt</source>
+                <target>Alt</target>
+            </trans-unit>
+            <trans-unit id="Action">
+                <source>Action</source>
+                <target>Action</target>
+            </trans-unit>
+            <trans-unit id="Manage Partners Create">
+                <source>Manage Partners Create</source>
+                <target>Ajout d'un nouveau partenaire</target>
+            </trans-unit>
+            <trans-unit id="Partner List">
+                <source>Partner List</source>
+                <target>Liste des partenaires</target>
+            </trans-unit>
+            <trans-unit id="export.label_Name">
+                <source>export.label_Name</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="export.label_CreatedAt">
+                <source>export.label_CreatedAt</source>
+                <target>Enregistré le</target>
+            </trans-unit>
+            <trans-unit id="export.label_Link">
+                <source>export.label_Link</source>
+                <target>Lien</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

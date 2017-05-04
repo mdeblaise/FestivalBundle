@@ -1,0 +1,23 @@
+{% extends "MMCFestivalBundle:Guest:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+        <div id="invites" class="row">
+            <div class="col-sm-12 col-md-12 invite">
+                {% include 'MMCCardBundle:Card:card_system.html.twig' with {
+                    card: guest,
+                    template: 'MMCFestivalBundle:Guest:show_details.html.twig',
+                    itemName: 'guest',
+                    itemClass: 'Guest'
+                } %}
+            </div>
+        </div>
+{% endblock content %}
+
+{% block title_content %}
+    {{ guest.name ? guest.name ~ ' - ' : '' }}{{ parent() }}
+{% endblock title_content %}
+
+{% block description_content %}
+    {{ guest.biography ? guest.biography|striptags|decode_entities|truncate(160 ): '' }}{{ parent() }}
+{% endblock description_content %}

@@ -1,0 +1,75 @@
+<div class="inv-img">
+    {% if guest.coverPhoto %}
+        <img src="{{ guest.coverPhoto|imagine_filter('guest_cover_photo')  }}" alt="{{ getAlt(guest.altCoverPhoto) }}" />
+    {% endif %}
+</div>
+
+<div class="row">
+    <div class="col-sm-2 hidden-xs">
+        <img src="{{ getResourcesPath('img_univers') ~ guest.univers ~ '.png' }}"
+            alt="{{ getAlt('') }}"
+            title="{{ guest.univers|univers_label }}"
+        />
+    </div>
+    <div class="cols-xs-12 col-sm-10">
+        <h2 class="large-art-title">
+            {{ guest.name }}
+        </h2>
+        <div class="art-detail">
+            {{ formatDays(guest, true) }}
+        </div>
+        {{ guest.biography|raw }}
+        {% if guest.externalLink %}
+            <p class="fa fa-external-link">
+                {{ 'website'|trans({}, 'guest') }}&nbsp;<a href="{{ guest.externalLink }}" target="_blank">{{ guest.externalLink }}</a>
+            </p>
+        {% endif %}
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-sm-2 hidden-xs">
+            <img src="{{ getResourcesPath('img_partager') }}" alt="{{ getAlt('') }}" />
+    </div>
+    <div class="cols-xs-12 col-sm-10">
+        <h2 class="art-title">
+            {{ 'shareInformationToSocialNetwork'|trans({}, 'activity') }}
+        </h2>
+        <p>
+            <a href="https://twitter.com/share" class="twitter-share-button" data-show-count="false" data-size="large">Tweet</a>
+            <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+            <iframe
+                src="https://www.facebook.com/plugins/share_button.php?href={{ url('mmc_festival_guest_view', { id: guest.card.id }) }}&layout=button&size=large&mobile_iframe=true&width=89&height=28&appId"
+                width="89"
+                height="28"
+                style="border:none;overflow:hidden"
+                scrolling="no"
+                frameborder="0"
+                allowTransparency="true">
+            </iframe>
+        </p>
+    </div>
+</div>
+
+{% if guest.validParticipations|length %}
+    <div class="row">
+        <div class="col-sm-2 hidden-xs"></div>
+        <div class="col-xs-12 col-sm-10">
+            <h2 class="art-title">
+                {{ 'participateTo'|trans({}, 'guest') }}
+            </h2>
+            <div class="participations row">
+                {% for participant in guest.validParticipations %}
+                    <div class="col-xs-6">
+                        {% include 'MMCCardBundle:Card:card_system.html.twig' with {
+                            card: participant,
+                            template: 'MMCFestivalBundle:Activity:participate.html.twig',
+                            itemName: 'activity',
+                            itemClass: 'Activity'
+                        } %}
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+{% endif %}

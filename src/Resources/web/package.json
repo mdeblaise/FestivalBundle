@@ -1,0 +1,35 @@
+{
+  "name": "mmc-festival-bundle",
+  "version": "1.0.0",
+  "description": "festival",
+  "directories": {
+    "test": "tests"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "",
+  "license": "private",
+  "dependencies": {
+    "bootstrap": "3.3.7",
+    "bootstrap-toggle": "^2.2.2",
+    "bootstrap3-dialog": "1.35.3",
+    "del": "^2.2.1",
+    "event-stream": "^3.3.4",
+    "font-awesome": "^4.6.3",
+    "gulp": "^3.9.1",
+    "gulp-concat": "~2.6.0",
+    "gulp-cssmin": "~0.1.7",
+    "gulp-file-include": "~0.13.7",
+    "gulp-jshint": "~2.0.0",
+    "gulp-jsmin": "~0.1.5",
+    "gulp-rename": "~1.2.2",
+    "gulp-requirejs-optimize": "~0.3.1",
+    "gulp-sass": "^3.1.0",
+    "jquery": "~2.1",
+    "jquery-ui-dist": "1.12.1",
+    "jshint": "~2.9.1",
+    "requirejs": "^2.1.22"
+  }
+}

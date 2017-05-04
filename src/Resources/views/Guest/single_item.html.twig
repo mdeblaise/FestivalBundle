@@ -1,0 +1,32 @@
+<a href="{{ path('mmc_festival_guest_view', { id: guest.card.id }) }}" class="guest-link item-link">
+    <div class="inv-img">
+        {% if guest.vignette %}
+            <img src="{{ guest.vignette|imagine_filter('guest_vignette')  }}" alt="{{ getAlt(guest.altVignette) }}" title="{{ guest.name }}" />
+        {% endif %}
+    </div>
+    <h1 class="art-title visible-xs-inline-block item-title">
+        {% if guest.guestOfHonor %}
+            <i class="fa fa-star" aria-hidden="true"></i>
+        {% endif %}
+        {{ guest.name }}
+    </h1>
+    <h1 class="art-title visible-sm-inline-block visible-md-inline-block item-title">
+        {% if guest.guestOfHonor %}
+            <i class="fa fa-star" aria-hidden="true"></i>
+        {% endif %}
+        {{ guest.name|truncate(30, false, '...') }}
+    </h1>
+    <h1 class="art-title visible-lg-inline-block item-title">
+        {% if guest.guestOfHonor %}
+            <i class="fa fa-star" aria-hidden="true"></i>
+        {% endif %}
+        {{ guest.name|truncate(20, false, '...') }}
+    </h1>
+    <div class="art-detail">
+        {{ guest.univers|univers_label }}
+        {% if guest is present %}
+            &#124;&nbsp;{{ formatDays(guest) }}
+        {% endif %}
+        <span class="{{ universFlagColor(guest.univers|univers_label) }}"></span>
+    </div>
+</a>

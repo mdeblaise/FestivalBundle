@@ -1,0 +1,7 @@
+<a href="{{ path('mmc_festival_guest_view', { id: guest.card.id }) }}" class="guest-link thumbnail">
+    <div class="inv-img">
+        {% if guest.vignette %}
+            <img src="{{ guest.vignette|imagine_filter('guest_vignette')  }}" alt="{{ getAlt(guest.altVignette) }}" title="{{ guest.name }}"  />
+        {% endif %}
+    </div>
+</a>

@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="Created At">
+                <source>Created At</source>
+                <target>Enregistré le</target>
+            </trans-unit>
+            <trans-unit id="Firstname">
+                <source>Firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="Lastname">
+                <source>Lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="Email">
+                <source>Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="Action">
+                <source>Action</source>
+                <target>Action</target>
+            </trans-unit>
+            <trans-unit id="Play">
+                <source>Play</source>
+                <target>Concours</target>
+            </trans-unit>
+            <trans-unit id="Play List">
+                <source>Play List</source>
+                <target>Liste des participants</target>
+            </trans-unit>
+            <trans-unit id="Detail">
+                <source>Detail</source>
+                <target>Détail</target>
+            </trans-unit>
+            <trans-unit id="Department Number">
+                <source>Department Number</source>
+                <target>Numéro de département</target>
+            </trans-unit>
+            <trans-unit id="export.label_CreatedAt">
+                <source>export.label_CreatedAt</source>
+                <target>Enregistré le</target>
+            </trans-unit>
+            <trans-unit id="export.label_Firstname">
+                <source>export.label_Firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="export.label_Lastname">
+                <source>export.label_Lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="export.label_Email">
+                <source>export.label_Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="export.label_DepartmentNumber">
+                <source>export.label_DepartmentNumber</source>
+                <target>Numéro de département</target>
+            </trans-unit>
+            <trans-unit id="Phone">
+                <source>Phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="Receive Information">
+                <source>Receive Information</source>
+                <target>Recevoir les informations</target>
+            </trans-unit>
+            <trans-unit id="export.label_Phone">
+                <source>export.label_Phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="export.label_ReceiveInformation">
+                <source>export.label_ReceiveInformation</source>
+                <target>Recevoir les informations</target>
+            </trans-unit>
+            <trans-unit id="yes">
+                <source>yes</source>
+                <target>Oui</target>
+            </trans-unit>
+            <trans-unit id="no">
+                <source>no</source>
+                <target>Non</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

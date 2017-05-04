@@ -1,0 +1,116 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="descriptif.title">
+                <source>descriptif.title</source>
+                <target>Descriptif</target>
+            </trans-unit>
+            <trans-unit id="participations.title">
+                <source>participations.title</source>
+                <target>Participants</target>
+            </trans-unit>
+            <trans-unit id="filterByActivityType">
+                <source>filterByActivityType</source>
+                <target>Filtrer par type d'activité :</target>
+            </trans-unit>
+            <trans-unit id="programNotAvailable">
+                <source>programNotAvailable</source>
+                <target>Le programme n'est pas encore disponible, mais vous pouvez vous faire une idée du Festival en téléchargeant celui de 2016.</target>
+            </trans-unit>
+            <trans-unit id="downloadProgram">
+                <source>downloadProgram</source>
+                <target>Télécharger le programme</target>
+            </trans-unit>
+            <trans-unit id="of2016Edition">
+                <source>of2016Edition</source>
+                <target>de l'édition 2016</target>
+            </trans-unit>
+            <trans-unit id="allActivity">
+                <source>allActivity</source>
+                <target>Toutes les activités</target>
+            </trans-unit>
+            <trans-unit id="friday">
+                <source>friday</source>
+                <target>Vendredi</target>
+            </trans-unit>
+            <trans-unit id="saturday">
+                <source>saturday</source>
+                <target>Samedi</target>
+            </trans-unit>
+            <trans-unit id="sunday">
+                <source>sunday</source>
+                <target>Dimanche</target>
+            </trans-unit>
+            <trans-unit id="all">
+                <source>all</source>
+                <target>Tous</target>
+            </trans-unit>
+            <trans-unit id="workshop">
+                <source>workshop</source>
+                <target>Ateliers</target>
+            </trans-unit>
+            <trans-unit id="conference">
+                <source>conference</source>
+                <target>Conférences</target>
+            </trans-unit>
+            <trans-unit id="dedication">
+                <source>dedication</source>
+                <target>Dédicaces</target>
+            </trans-unit>
+            <trans-unit id="exposure">
+                <source>exposure</source>
+                <target>Expositions</target>
+            </trans-unit>
+            <trans-unit id="show">
+                <source>show</source>
+                <target>Spectacles</target>
+            </trans-unit>
+            <trans-unit id="shareInformationToSocialNetwork">
+                <source>shareInformationToSocialNetwork</source>
+                <target>Partagez l'info sur vos réseaux</target>
+            </trans-unit>
+            <trans-unit id="withParticipationOf">
+                <source>withParticipationOf</source>
+                <target>Avec la participation de</target>
+            </trans-unit>
+            <trans-unit id="main.title">
+                <source>main.title</source>
+                <target>Programme</target>
+            </trans-unit>
+            <trans-unit id="see-next">
+                <source>see-next</source>
+                <target>Voir plus d'activités</target>
+            </trans-unit>
+            <trans-unit id="no_result.continue">
+                <source>no_result.continue</source>
+                <target>Merci pour votre patience et parcourez le reste du programme en attendant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.univers_with_type">
+                <source>no_result.univers_with_type</source>
+                <target>Aucune activité de type "%type%" reliée à l'univers "%univers%" n'est programmée pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.univers">
+                <source>no_result.univers</source>
+                <target>Aucune activité pour l'univers "%univers%" n'est programmée pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.days_with_type">
+                <source>no_result.days_with_type</source>
+                <target>Aucune activité de type "%type%" n'est programmée %day% pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.days">
+                <source>no_result.days</source>
+                <target>Aucune activité n'est programmée %day% pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.type">
+                <source>no_result.type</source>
+                <target>Aucune activité de type "%type%" n'est programmée pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result">
+                <source>no_result</source>
+                <target>Aucune activité pour le moment</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>
+

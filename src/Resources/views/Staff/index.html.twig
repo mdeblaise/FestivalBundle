@@ -1,0 +1,120 @@
+{% extends "MMCFestivalBundle:Staff:layout.html.twig" %}
+
+{% trans_default_domain 'staff' %}
+
+{% block content %}
+    {{ parent() }}
+    <div id="staff" class="row">
+        <div class="col-md-12 hidden-xs hidden-sm poster">
+            {% block visuel_staff %}
+                <img src="{{ getResourcesPath('img_visuel_staff') }}" alt="{{ getAlt('Rejoignez le Staff du') }}">
+            {% endblock visuel_staff %}
+        </div>
+        <div class="col-sm-12">
+            <div id="staff-only" class="text-with-picto-large">
+                <h2 class="art-title">Staff only !</h2>
+                <p class="txt_style_1">
+                    {{ 'staff.text'|trans({}, 'staff')|raw }}
+                </p>
+            </div>
+        </div>
+        {% block form_staff %}
+            <div class="col-sm-12">
+                <div id="staff-form" class="text-with-picto-large">
+                    <h2 class="art-title">Formulaire à remplir</h2>
+
+                    {{ form_errors(form) }}
+
+                    <form action="{{ path('mmc_festival_staff') }}" method="post" class="container-fluid">
+                        {{ form_widget(form._token) }}
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-6">
+                                {{ form_row(form.lastname) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                {{ form_row(form.firstname) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                {{ form_row(form.email) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                {{ form_row(form.phone) }}
+                            </div>
+                            <div class="col-xs-12 col-sm-6">
+                                {{ form_row(form.birthday) }}
+                            </div>
+                            <div class="col-xs-12">
+                                {{ form_row(form.univers) }}
+                            </div>
+                            <div class="col-xs-12">
+                                {{ form_row(form.whyWishYouJoin) }}
+                            </div>
+                            <div class="col-xs-12">
+                                {{ form_row(form.whatDoYouLikeToDo) }}
+                            </div>
+                            <div class="col-xs-12">
+                                <div class="form-group{% if form.availabilities.vars.errors|length %} has-error{% endif %}">
+                                    {{ form_label(form.availabilities) }}
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead>
+                                                <tr>
+                                                    <th></th>
+                                                    {% for day in getStaffDays() %}
+                                                        <th>{{ day.day|trans({}, 'schedule') }}<br />{{ day.number }}</th>
+                                                    {% endfor %}
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>Matin</td>
+                                                    {% for i, child in form.availabilities if i is even %}
+                                                        <td>
+                                                            <input type="checkbox"
+                                                                id="{{ child.vars.id }}"
+                                                                name="{{ child.vars.full_name }}"
+                                                                value="{{ child.vars.value }}"
+                                                                data-toggle="toggle"
+                                                                data-on="Oui"
+                                                                data-off="Non"
+                                                                data-onstyle="te"
+                                                                {{ child.vars.checked ? 'checked' : '' }}
+                                                            />
+                                                        </td>
+                                                    {% endfor %}
+                                                </tr>
+                                                <tr>
+                                                    <td>Après midi</td>
+                                                    {% for i, child in form.availabilities if i is odd %}
+                                                        <td>
+                                                            <input type="checkbox"
+                                                                id="{{ child.vars.id }}"
+                                                                name="{{ child.vars.full_name }}"
+                                                                value="{{ child.vars.value }}"
+                                                                data-toggle="toggle"
+                                                                data-on="Oui"
+                                                                data-off="Non"
+                                                                data-onstyle="te"
+                                                                {{ child.vars.checked ? 'checked' : '' }}
+                                                            />
+                                                        </td>
+                                                    {% endfor %}
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    {{ form_errors(form.availabilities) }}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6">
+                                <input type="submit" class="btn btn-festival btn-block" value="Envoyer" />
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        {% endblock form_staff %}
+    </div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends "MMCFestivalBundle:Staff:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+    <div id="staff" class="row">
+        <div class="col-md-12 hidden-xs hidden-sm poster">
+            <img src="{{ getResourcesPath('img_visuel_staff') }}">
+        </div>
+        <div class="col-sm-12">
+            <div id="staff-only" class="text-with-picto-large">
+                <h2 class="art-title">Votre inscription a bien été envoyée !</h2>
+                <p class="txt_style_1">
+                    Nous vous recontacterons par mail dans les plus brefs délais.
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

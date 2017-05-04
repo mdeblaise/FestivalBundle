@@ -1,0 +1,22 @@
+{% extends "MMCFestivalBundle:Default:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+    <div id="diaporama" class="mod-festival hidden-xs">
+        {{ renderCarousel('home') }}
+    </div>
+    <div id="articles">
+        <div class="row">
+            {% for actuality in actualitiesResponse.list %}
+                <div class="col-sm-6">
+                    {% include 'MMCCardBundle:Card:card_system.html.twig' with {
+                        card: actuality,
+                        template: 'MMCFestivalBundle:Actuality:single_item.html.twig',
+                        itemName: 'actuality',
+                        itemClass: 'Actuality'
+                    } %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,60 @@
+{% extends "MMCFestivalBundle:Exponent:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+
+    {% if not response.isFake %}
+
+        {% block noFake %}
+            {% if response.nbResults != null %}
+                <div id="invites" class="row">
+                    {% for exponent in response.list if exponent.valid.vignette|default(false) or exponent.draft.vignette|default(false) %}
+                        <div class="col-sm-6">
+                            {% include 'MMCCardBundle:Card:card_system.html.twig' with {
+                                card: exponent,
+                                template: 'MMCFestivalBundle:Exponent:single_item_with_photo.html.twig',
+                                itemName: 'exponent',
+                                itemClass: 'Exponent'
+                            } %}
+                        </div>
+                    {% endfor %}
+                </div>
+                <hr>
+                <div id="invites" class="row">
+                    {% for exponent in response.list if not exponent.valid.vignette|default(false) and not exponent.draft.vignette|default(false) %}
+                        <div class="col-xs-12 col-sm-6 col-lg-4">
+                            {% include 'MMCCardBundle:Card:card_system.html.twig' with {
+                                card: exponent,
+                                template: 'MMCFestivalBundle:Exponent:single_item.html.twig',
+                                itemName: 'exponent',
+                                itemClass: 'Exponent'
+                            } %}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    {% if response.request.univers %}
+                        {{ 'no_result.univers'|trans({
+                            '%univers%' : response.request.univers|univers_label
+                        }, 'exponent')}}
+                    {% else %}
+                        {{ 'no_result'|trans({}, 'exponent')}}
+                    {% endif %}
+
+                    <br />
+                    {{ 'no_result.continue'|trans({}, 'exponent')}}
+
+                </div>
+            {% endif %}
+        {% endblock noFake %}
+
+    {% else %}
+
+        {% block fake %}
+            {{ renderCarousel('exponent') }}
+        {% endblock fake %}
+
+    {% endif %}
+
+{% endblock content %}

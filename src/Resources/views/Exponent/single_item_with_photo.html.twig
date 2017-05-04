@@ -1,0 +1,36 @@
+<div class="exponent exponent-with-vignette thumbnail">
+    {% if exponent.website %}
+    <a href="{{ exponent.website }}" target="_blank" class="hyperlink-color">
+    {% endif %}
+        <div class="row">
+            <div class="col-xs-4">
+                <img src="{{ exponent.vignette|imagine_filter('exponent_vignette')  }}" alt="{{ getAlt('exponent.alt') }}" title="{{ exponent.name }}"  />
+            </div>
+            <div class="col-xs-8">
+                <p class="title"><b>{{ exponent.name|truncate(40, false, '...') }}</b></p>
+                <p class="descriptif visible-xs-inline-block">
+                    {{ exponent.descriptif }}
+                </p>
+                <p class="descriptif descriptif-limited visible-sm-inline-block visible-md-inline-block">
+                    {{ exponent.descriptif|truncate(105, false, '...') }}
+                </p>
+                <p class="descriptif descriptif-limited visible-lg-inline-block">
+                    {{ exponent.descriptif|truncate(135, false, '...') }}
+                </p>
+                <p class="location">
+                    {% if exponent.stand %}
+                        Stand n°{{ exponent.stand }}
+                    {% endif %}
+                    {% if exponent.stand and exponent.level %}
+                        /
+                    {% endif %}
+                    {% if exponent.level %}
+                        Niveau {{ exponent.level }}
+                    {% endif %}
+                </p>
+            </div>
+        </div>
+    {% if exponent.website %}
+    </a>
+    {% endif %}
+</div>

@@ -1,0 +1,118 @@
+mmc_festival_homepage:
+    path:     /
+    defaults: { _controller: mmc_festival.Controller.Default:indexAction }
+
+mmc_festival_guest:
+    path:     /invites
+    defaults: { _controller: mmc_festival.Controller.Guest:indexAction }
+
+mmc_festival_guest_of_honor:
+    path:     /invites/invites_honneur
+    defaults: { _controller: mmc_festival.Controller.Guest:indexAction, honor: true }
+
+mmc_festival_guest_day:
+    path:     /invites/{day}
+    defaults: { _controller: mmc_festival.Controller.Guest:indexAction }
+    requirements:
+        day: 'vendredi|samedi|dimanche'
+
+mmc_festival_guest_view:
+    path:     /invites/{id}
+    defaults: { _controller: mmc_festival.Controller.Guest:viewAction }
+    requirements:
+        id: \d+
+
+mmc_festival_guest_univers:
+    path:     /invites/{univers}
+    defaults: { _controller: mmc_festival.Controller.Guest:indexAction }
+    requirements:
+        univers: \w+
+
+mmc_festival_activity:
+    path:     /programme
+    defaults: { _controller: mmc_festival.Controller.Activity:indexAction }
+
+mmc_festival_activity_view:
+    path:     /programme/{id}
+    defaults: { _controller: mmc_festival.Controller.Activity:viewAction }
+    requirements:
+        id: \d+
+
+mmc_festival_activity_day:
+    path:     /programme/{day}
+    defaults: { _controller: mmc_festival.Controller.Activity:indexAction }
+    requirements:
+        day: 'vendredi|samedi|dimanche'
+
+
+mmc_festival_activity_univers:
+    path:     /programme/{univers}
+    defaults: { _controller: mmc_festival.Controller.Activity:indexAction }
+    requirements:
+        univers: \w+
+
+mmc_festival_exponent:
+    path:     /exposants
+    defaults: { _controller: mmc_festival.Controller.Exponent:indexAction }
+
+mmc_festival_exponent_univers:
+    path:     /exposants/{univers}
+    defaults: { _controller: mmc_festival.Controller.Exponent:indexAction }
+    requirements:
+        univers: \w+
+
+mmc_festival_exponent_become:
+    path:     /devenir-exposant
+    defaults: { _controller: mmc_festival.Controller.Exponent:becomeAction }
+
+mmc_festival_exponent_become_confirm:
+    path:     /devenir-exposant/confirmation
+    defaults: { _controller: mmc_festival.Controller.Exponent:confirmAction }
+
+mmc_festival_press:
+    path:     /presse
+    defaults: { _controller: mmc_festival.Controller.Press:indexAction }
+
+mmc_festival_press_contact:
+    path:     /presse/contact
+    defaults: { _controller: mmc_festival.Controller.Press:contactAction }
+
+mmc_festival_press_confirm:
+    path:     /presse/confirmation
+    defaults: { _controller: mmc_festival.Controller.Press:confirmAction }
+
+mmc_festival_get_program:
+    path:     /recevoir-programme
+    defaults: { _controller: mmc_festival.Controller.GetProgram:indexAction }
+
+mmc_festival_get_program_confirm:
+    path:     /recevoir-programme/confirmation
+    defaults: { _controller: mmc_festival.Controller.GetProgram:confirmAction }
+
+mmc_festival_ticketing:
+    path:     /billetterie
+    defaults: { _controller: mmc_festival.Controller.Default:ticketingAction }
+
+mmc_festival_infos:
+    path:     /infos
+    defaults: { _controller: mmc_festival.Controller.Default:infosAction }
+
+mmc_festival_staff:
+    path:     /staff
+    defaults: { _controller: mmc_festival.Controller.Staff:indexAction }
+
+mmc_festival_staff_confirm:
+    path:     /staff/confirmation
+    defaults: { _controller: mmc_festival.Controller.Staff:confirmAction }
+
+mmc_festival_legalNotice:
+    path:     /mentions-legales
+    defaults: { _controller: mmc_festival.Controller.Default:legalNoticeAction }
+
+mmc_festival_securityRules:
+    path:     /regles-securite
+    defaults: { _controller: mmc_festival.Controller.Default:securityRulesAction }
+
+mmc_festival_play:
+    path:     /concours
+    defaults: { _controller: mmc_festival.Controller.Play:indexAction }

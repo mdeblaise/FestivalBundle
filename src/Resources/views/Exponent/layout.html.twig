@@ -1,0 +1,30 @@
+{% extends 'MMCFestivalBundle::layout.html.twig' %}
+
+{% block submenu %}
+    <div class="navbar-header" data-toggle="collapse" data-target="#sousmenu">
+        <button type="button" class="navbar-toggle collapsed navbar-toggle-center" data-toggle="collapse" data-target="#sousmenu" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </button>
+        <a class="navbar-brand visible-xs-inline" href="#">Exposants</a>
+    </div>
+    <div class="collapse navbar-collapse niveau-2" id="sousmenu">
+        <ul class="nav nav-justified">
+            {% for univers in getUniversCodes() %}
+                <li class="{{ currentPage.submenu == univers ? 'active' : '' }}">
+                    <a href="{{ path('mmc_festival_exponent_univers', {univers: univers}) }}">{{ univers|trans({}, 'univers') }}</a>
+                </li>
+            {% endfor %}
+            <li class="{{ currentPage.submenu == '' ? 'active' : '' }}">
+                <a href="{{ path('mmc_festival_exponent') }}">{{ 'ourExponent'|trans({}, 'exponent') }}</a>
+            </li>
+            <li class="{{ currentPage.submenu == 'become' ? 'active' : '' }}">
+                <a href="{{ path('mmc_festival_exponent_become') }}">{{ 'becomeExponent'|trans({}, 'exponent') }}</a>
+            </li>
+        </ul>
+    </div>
+{% endblock submenu %}
+
+{% block title_content %}
+    {{ 'exponentTitle'|trans({}, 'exponent') }}
+{% endblock title_content %}

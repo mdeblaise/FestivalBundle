@@ -1,0 +1,92 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="form_firstname">
+                <source>form_firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="form_lastname">
+                <source>form_lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="form_email">
+                <source>form_email</source>
+                <target>Adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="form_phone">
+                <source>form_phone</source>
+                <target>Numéro de téléphone</target>
+            </trans-unit>
+            <trans-unit id="form_social_reason">
+                <source>form_social_reason</source>
+                <target>Raison sociale</target>
+            </trans-unit>
+            <trans-unit id="form_type_products">
+                <source>form_type_products</source>
+                <target>Type de produits</target>
+            </trans-unit>
+            <trans-unit id="form_message">
+                <source>form_message</source>
+                <target>Message</target>
+            </trans-unit>
+            <trans-unit id="requestSend">
+                <source>requestSend</source>
+                <target>Votre demande a bien été envoyée !</target>
+            </trans-unit>
+            <trans-unit id="contactSoon">
+                <source>contactSoon</source>
+                <target>Nous vons recontacterons par mail dans les plus brefs délais.</target>
+            </trans-unit>
+            <trans-unit id="exponentTitle">
+                <source>exponentTitle</source>
+                <target>Exposants</target>
+            </trans-unit>
+            <trans-unit id="ourExponent">
+                <source>ourExponent</source>
+                <target>Nos exposants</target>
+            </trans-unit>
+            <trans-unit id="becomeExponent">
+                <source>becomeExponent</source>
+                <target>Devenir exposant</target>
+            </trans-unit>
+            <trans-unit id="website">
+                <source>website</source>
+                <target>Site internet</target>
+            </trans-unit>
+            <trans-unit id="location.stand">
+                <source>location.stand</source>
+                <target>Stand n°%stand%</target>
+            </trans-unit>
+            <trans-unit id="location.separator">
+                <source>location.separator</source>
+                <target>/</target>
+            </trans-unit>
+            <trans-unit id="location.level">
+                <source>location.level</source>
+                <target>Niveau %level%</target>
+            </trans-unit>
+            <trans-unit id="no_result.continue">
+                <source>no_result.continue</source>
+                <target>Merci pour votre patience et parcourez le reste du programme en attendant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.univers">
+                <source>no_result.univers</source>
+                <target>Aucun exposant pour l'univers "%univers%" n'est enregistré pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result">
+                <source>no_result</source>
+                <target>Aucun exposant n'est enregistré pour le moment</target>
+            </trans-unit>
+            <trans-unit id="become.contact.text">
+                <source>become.contact.text</source>
+                <target><![CDATA[
+                    <h2 class="art-title">Contact</h2>
+                    <p class="txt_style_1">Vous souhaitez exposer ou devenir partenaire ?</p>
+                    <p class="txt_style_1">Merci de remplir le formulaire et nous prendrons contact avec vous dans les plus brefs délais.</p>
+                ]]>
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

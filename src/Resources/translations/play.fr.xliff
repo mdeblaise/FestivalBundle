@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="form_firstname">
+                <source>form_firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="form_lastname">
+                <source>form_lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="form_email">
+                <source>form_email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="form_departmentNumber">
+                <source>form_departmentNumber</source>
+                <target>Numéro de département</target>
+            </trans-unit>
+            <trans-unit id="registration.success">
+                <source>registration.success</source>
+                <target>Votre inscription a bien été prise en compte !</target>
+            </trans-unit>
+            <trans-unit id="form_phone">
+                <source>form_phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="form_receiveInformation">
+                <source>form_receiveInformation</source>
+                <target>Je souhaite recevoir les informations sur les autres événements organisés par le Festival</target>
+            </trans-unit>
+            <trans-unit id="submit.before">
+                <source>submit.before</source>
+                <target><![CDATA[
+                    <p>En cliquant sur le bouton, vous acceptez les conditions et règlement de ce jeu concours.</p>
+                    <p>Les informations qui vous concernent sont destinées au Festival et ses partenaires (commerciaux..).</p>
+                    ]]>
+                </target>
+            </trans-unit>
+            <trans-unit id="contestRules.link.text">
+                <source>contestRules.link.text</source>
+                <target>Cliquez ici pour visualiser le règlement.</target>
+            </trans-unit>
+            <trans-unit id="contestRules.modal.title">
+                <source>contestRules.modal.title</source>
+                <target>Règlement du Jeu</target>
+            </trans-unit>
+            <trans-unit id="contestRules.modal.close">
+                <source>contestRules.modal.close</source>
+                <target>Fermer</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

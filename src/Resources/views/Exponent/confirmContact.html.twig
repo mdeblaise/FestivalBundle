@@ -1,0 +1,15 @@
+{% extends "MMCFestivalBundle:Exponent:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+    <div id="staff" class="row">
+        <div class="col-sm-12">
+            <div id="staff-only" class="text-center">
+                <h2 class="art-title">{{ 'requestSend'|trans({}, 'exponent') }}</h2>
+                <p class="txt_style_1">
+                    {{ 'contactSoon'|trans({}, 'exponent') }}
+                </p>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

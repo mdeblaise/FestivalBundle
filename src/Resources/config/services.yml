@@ -1,0 +1,363 @@
+services:
+    mmc_festival.repository.actualities:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - MMC\FestivalBundle\Entity\CardActuality
+    mmc_festival.repository.guests:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - MMC\FestivalBundle\Entity\CardGuest
+    mmc_festival.repository.activities:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - MMC\FestivalBundle\Entity\CardActivity
+    mmc_festival.repository.exponents:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - MMC\FestivalBundle\Entity\CardExponent
+    mmc_festival.repository.partners:
+        class: Doctrine\ORM\EntityRepository
+        factory: ['@doctrine.orm.default_entity_manager', getRepository]
+        arguments:
+            - MMC\FestivalBundle\Entity\Partner
+
+    #SCHEDULE
+    mmc_festival.schedule.provider:
+        class: MMC\FestivalBundle\Services\Schedule\ScheduleProvider
+        arguments:
+            - '%mmc_festival.schedule.reference_date%'
+            - '%mmc_festival.schedule.festival_length%'
+            - '%mmc_festival.schedule.preparation_length%'
+            - '@translator'
+
+    #UNIVERS
+    mmc_festival.univers.provider:
+        class: MMC\FestivalBundle\Services\EnumUniversProvider
+        arguments:
+            - '%mmc_festival.univers.class%'
+    mmc_festival.univers.validator:
+        class: MMC\FestivalBundle\Validator\Constraint\UniversValidator
+        arguments:
+            - '%mmc_festival.univers.class%'
+        tags:
+            - { name: validator.constraint_validator, alias: mmc_festival.univers.validator }
+
+    #ACTUALITY
+    mmc_festival.Controller.Default:
+        class: MMC\FestivalBundle\Controller\DefaultController
+        arguments:
+            - '@templating'
+            - '@mmc_festival.ChainLister.Actuality'
+            - '@mmc_festival.RequestFactory.Actuality'
+            - '@security.authorization_checker'
+    mmc_festival.RequestFactory.Actuality:
+        class: MMC\FestivalBundle\Services\Actuality\RequestFactory
+        arguments: ['@mmc_festival.DateReference','%mmc_festival.maxPerPage.Actuality%']
+    mmc_festival.ChainLister.Actuality:
+        class: MMC\FestivalBundle\Services\Lister\ChainLister
+    mmc_festival.DoctrineLister.Actuality:
+        class: MMC\FestivalBundle\Services\Actuality\DoctrineLister
+        arguments: ['@mmc_festival.repository.actualities']
+        calls:
+            - ['setSupportLimit', ['%mmc_festival.supportLimit.Actuality%']]
+        tags:
+            - { name: mmc_festival.ChainLister.Actuality }
+    mmc_festival.FakeLister.Actuality:
+        class: MMC\FestivalBundle\Services\Actuality\FakeLister
+        tags:
+            - { name: mmc_festival.ChainLister.Actuality }
+        calls:
+            - ['setRepository', ['@mmc_festival.FakeActualityRepository']]
+    mmc_festival.FakeActualityRepository:
+        class: MMC\FestivalBundle\Services\Actuality\FakeActualityRepository
+        calls:
+            - [addSereval, ['%mmc_festival.fake_actualities%']]
+
+    #GUEST
+    mmc_festival.Controller.Guest:
+        class: MMC\FestivalBundle\Controller\GuestController
+        arguments:
+            - '@templating'
+            - '@mmc_festival.ChainLister.Guest'
+            - '@mmc_festival.RequestFactory.Guest'
+            - '@security.authorization_checker'
+    mmc_festival.RequestFactory.Guest:
+        class: MMC\FestivalBundle\Services\Guest\RequestFactory
+        arguments:
+            - '%mmc_festival.maxPerPage.Guest%'
+            - '%mmc_festival.current_edition%'
+        calls:
+            - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
+            - [ setScheduleProvider, ['@mmc_festival.schedule.provider']]
+    mmc_festival.ChainLister.Guest:
+        class: MMC\FestivalBundle\Services\Lister\ChainLister
+    mmc_festival.DoctrineLister.Guest:
+        class: MMC\FestivalBundle\Services\Guest\DoctrineLister
+        arguments: ['@mmc_festival.repository.guests']
+        calls:
+            - ['setSupportLimit', ['%mmc_festival.supportLimit.Guest%']]
+        tags:
+            - { name: mmc_festival.ChainLister.Guest }
+    mmc_festival.FakeLister.Guest:
+        class: MMC\FestivalBundle\Services\Guest\FakeLister
+        tags:
+            - { name: mmc_festival.ChainLister.Guest }
+
+    #ACTIVITY
+    mmc_festival.Controller.Activity:
+        class: MMC\FestivalBundle\Controller\ActivityController
+        arguments:
+            - '@templating'
+            - '@mmc_festival.ChainLister.Activity'
+            - '@mmc_festival.RequestFactory.Activity'
+            - '@security.authorization_checker'
+    mmc_festival.RequestFactory.Activity:
+        class: MMC\FestivalBundle\Services\Activity\RequestFactory
+        arguments:
+            - '%mmc_festival.maxPerPage.Activity%'
+            - '%mmc_festival.current_edition%'
+        calls:
+            - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
+            - [ setScheduleProvider, ['@mmc_festival.schedule.provider']]
+    mmc_festival.ChainLister.Activity:
+        class: MMC\FestivalBundle\Services\Lister\ChainLister
+    mmc_festival.DoctrineLister.Activity:
+        class: MMC\FestivalBundle\Services\Activity\DoctrineLister
+        arguments: ['@mmc_festival.repository.activities']
+        calls:
+            - ['setSupportLimit', ['%mmc_festival.supportLimit.Activity%']]
+        tags:
+            - { name: mmc_festival.ChainLister.Activity }
+    mmc_festival.FakeLister.Activity:
+        class: MMC\FestivalBundle\Services\Activity\FakeLister
+        tags:
+            - { name: mmc_festival.ChainLister.Activity }
+
+    #EXPONENT
+    mmc_festival.Controller.Exponent:
+        class: MMC\FestivalBundle\Controller\ExponentController
+        arguments:
+            - '@templating'
+            - '@router'
+            - '@form.factory'
+            - '@mmc_festival.RegisterProcessor.exponent'
+            - '@mmc_festival.ChainLister.Exponent'
+            - '@mmc_festival.RequestFactory.Exponent'
+            - '@security.authorization_checker'
+    mmc_festival.RequestFactory.Exponent:
+        class: MMC\FestivalBundle\Services\Exponent\RequestFactory
+        arguments:
+            - '%mmc_festival.maxPerPage.Exponent%'
+            - '%mmc_festival.current_edition%'
+        calls:
+            - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
+    mmc_festival.ChainLister.Exponent:
+        class: MMC\FestivalBundle\Services\Lister\ChainLister
+    mmc_festival.DoctrineLister.Exponent:
+        class: MMC\FestivalBundle\Services\Exponent\DoctrineLister
+        arguments: ['@mmc_festival.repository.exponents']
+        calls:
+            - ['setSupportLimit', ['%mmc_festival.supportLimit.Exponent%']]
+        tags:
+            - { name: mmc_festival.ChainLister.Exponent }
+    mmc_festival.FakeLister.Exponent:
+        class: MMC\FestivalBundle\Services\Exponent\FakeLister
+        tags:
+            - { name: mmc_festival.ChainLister.Exponent }
+
+    #DATEREFERENCE
+    mmc_festival.DateReference:
+        class: MMC\FestivalBundle\Services\DateReference
+
+
+    jtf2017_twig_extension:
+        class: MMC\FestivalBundle\Twig\MMCExtension
+        public: false
+        arguments:
+            - '@jtf2017_current_page_info'
+            - '@mmc_festival.Carousel'
+            - '@translator'
+            - '%mmc_festival.alt_text%'
+            - '@mmc_festival.univers.provider'
+            - '@greg0ire_enum.twig.extension.enum'
+            - '@mmc_festival.schedule.provider'
+            - '%mmc_festival.resourcespath%'
+
+        tags:
+            - { name: twig.extension }
+
+    jtf2017_current_page_info:
+        class: MMC\FestivalBundle\Services\CurrentPageInfo
+        public: false
+        arguments: ['@request_stack']
+
+    #CAROUSEL
+    mmc_festival.Carousel:
+        class: MMC\FestivalBundle\Services\Carousel\ChainCarousel
+
+    mmc_festival.Carousel.home:
+        class: MMC\FestivalBundle\Services\Carousel\SimpleCarousel
+        arguments: ['home', '%mmc_festival.carousel.home%']
+        tags:
+            - { name: mmc_festival.Carousel, alias: mmc_festival.Carousel.home }
+
+    mmc_festival.Carousel.guest:
+        class: MMC\FestivalBundle\Services\Carousel\FileFinderCarousel
+        arguments: ['guest', 'slider-guests']
+        calls:
+            - [setRootPath,  ['%slider_guests_rootPath%']]
+            - [setWebPath,  ['%slider_guests_webPath%']]
+        tags:
+            - { name: mmc_festival.Carousel, alias: mmc_festival.Carousel.guest }
+
+    mmc_festival.Carousel.exponent:
+        class: MMC\FestivalBundle\Services\Carousel\FileFinderCarousel
+        arguments: ['exponent', 'slider-exponents']
+        calls:
+            - [setRootPath,  ['%slider_exponents_rootPath%']]
+            - [setWebPath,  ['%slider_exponents_webPath%']]
+        tags:
+            - { name: mmc_festival.Carousel, alias: mmc_festival.Carousel.exponent }
+
+    mmc_festival.Carousel.become_exponent:
+        class: MMC\FestivalBundle\Services\Carousel\SimpleCarousel
+        arguments: ['become_exponent', '%mmc_festival.carousel.become_exponent%']
+        tags:
+            - { name: mmc_festival.Carousel, alias: mmc_festival.Carousel.become_exponent }
+
+    mmc_festival.Carousel.activity:
+        class: MMC\FestivalBundle\Services\Carousel\FileFinderCarousel
+        arguments: ['activity', 'slider-activities']
+        calls:
+            - [setRootPath,  ['%slider_activities_rootPath%']]
+            - [setWebPath,  ['%slider_activities_webPath%']]
+        tags:
+            - { name: mmc_festival.Carousel, alias: mmc_festival.Carousel.activity }
+
+    mmc_festival.Carousel.partners:
+        class: MMC\FestivalBundle\Services\Carousel\DoctrineCarousel
+        arguments: ['partners', '@mmc_festival.repository.partners']
+
+    mmc_festival.Carousel.partners_shuffle:
+        class: MMC\FestivalBundle\Services\Carousel\ShuffleCarousel
+        arguments: ['@mmc_festival.Carousel.partners']
+        tags:
+            - { name: mmc_festival.Carousel, alias: mmc_festival.Carousel.partners }
+
+    mmc_festival.RegisterProcessor.exponent:
+        class: MMC\FestivalBundle\Services\RegisterProcessor
+        arguments:
+            - '@mailer'
+            - '@templating'
+            - '%mmc_festival.emails.contact_sender_email%'
+            - '%mmc_festival.emails.contact_exponent_email%'
+            - '%mmc_festival.registration.exponent.template%'
+            - '%mmc_festival.registration.exponent.subject%'
+
+    #STAFF
+    mmc_festival.Controller.Staff:
+        class: MMC\FestivalBundle\Controller\StaffController
+        arguments:
+            - '@templating'
+            - '@router'
+            - '@form.factory'
+            - '@mmc_festival.RegisterProcessor.staff'
+
+    mmc_festival.RegisterProcessor.staff:
+        class: MMC\FestivalBundle\Services\RegisterProcessor
+        arguments:
+            - '@mailer'
+            - '@templating'
+            - '%mmc_festival.emails.contact_sender_email%'
+            - '%mmc_festival.emails.contact_staff_email%'
+            - '%mmc_festival.registration.staff.template%'
+            - '%mmc_festival.registration.staff.subject%'
+    mmc_festival.contact_staff.type:
+        class: MMC\FestivalBundle\Form\ContactStaffType
+        arguments:
+            - '@mmc_festival.univers.provider'
+            - '@mmc_festival.schedule.provider'
+        tags:
+            - { name: form.type }
+
+    #PRESS
+    mmc_festival.Controller.Press:
+        class: MMC\FestivalBundle\Controller\PressController
+        arguments:
+            - '@templating'
+            - '@router'
+            - '@form.factory'
+            - '@mmc_festival.DoctrineManager.press'
+
+    mmc_festival.DoctrineManager.press:
+        class: MMC\FestivalBundle\Services\Press\DoctrineManager
+        arguments: ['@doctrine.orm.default_entity_manager']
+
+    mmc_festival.ContactPressType:
+       class: MMC\FestivalBundle\Form\ContactPressType
+       arguments: ['@translator']
+       tags:
+           - { name: form.type, alias: mmc_festival.ContactPressType }
+
+    #GET_PROGRAM
+    mmc_festival.Controller.GetProgram:
+        class: MMC\FestivalBundle\Controller\GetProgramController
+        arguments:
+            - '@templating'
+            - '@router'
+            - '@form.factory'
+            - '@mmc_festival.DoctrineManager.getProgram'
+
+    mmc_festival.DoctrineManager.getProgram:
+        class: MMC\FestivalBundle\Services\GetProgram\DoctrineManager
+        arguments: ['@doctrine.orm.default_entity_manager']
+
+    mmc_festival.GetProgramType:
+       class: MMC\FestivalBundle\Form\GetProgramType
+       arguments: ['@translator']
+       tags:
+           - { name: form.type, alias: mmc_festival.GetProgramType }
+
+    #PLAY
+    mmc_festival.Controller.Play:
+        class: MMC\FestivalBundle\Controller\PlayController
+        arguments:
+            - '@templating'
+            - '@router'
+            - '@form.factory'
+            - '@mmc_festival.DoctrineManager.play'
+            - '@translator'
+
+    mmc_festival.DoctrineManager.Play:
+        class: MMC\FestivalBundle\Services\Play\DoctrineManager
+        arguments: ['@doctrine.orm.default_entity_manager']
+
+    mmc_festival.PlayType:
+       class: MMC\FestivalBundle\Form\PlayType
+       arguments: ['@translator']
+       tags:
+           - { name: form.type, alias: mmc_festival.PlayType }
+
+parameters:
+    mmc_festival.maxPerPage.Activity: 12
+    mmc_festival.supportLimit.Activity: 10
+    mmc_festival.maxPerPage.Actuality: 6
+    mmc_festival.supportLimit.Actuality: 6
+    mmc_festival.maxPerPage.Exponent: 200
+    mmc_festival.supportLimit.Exponent: 10
+    mmc_festival.maxPerPage.Guest: 12
+    mmc_festival.supportlimit.guest: 10
+    mmc_festival.registration.exponent.template: MMCFestivalBundle:Exponent:mailContact.html.twig
+    mmc_festival.registration.exponent.subject: Prise de contact exposant
+    mmc_festival.registration.staff.template: MMCFestivalBundle:Staff:mailContact.html.twig
+    mmc_festival.registration.staff.subject: Prise de contact Staff
+    slider_activities_rootPath: '%kernel.root_dir%/../web/bundles/mmcfestival/images/'
+    slider_exponents_rootPath: '%kernel.root_dir%/../web/bundles/mmcfestival/images/'
+    slider_guests_rootPath: '%kernel.root_dir%/../web/bundles/mmcfestival/images/'
+    slider_activities_webPath: '/dist/FrontBundle/images/'
+    slider_exponents_webPath: '/dist/FrontBundle/images/'
+    slider_guests_webPath: '/dist/FrontBundle/images/'

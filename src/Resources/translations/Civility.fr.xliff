@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="mademoiselle">
+                <source>mademoiselle</source>
+                <target>Mademoiselle</target>
+            </trans-unit>
+            <trans-unit id="madame">
+                <source>madame</source>
+                <target>Madame</target>
+            </trans-unit>
+            <trans-unit id="monsieur">
+                <source>monsieur</source>
+                <target>Monsieur</target>
+            </trans-unit>
+            <trans-unit id="export.label_Civility">
+                <source>export.label_Civility</source>
+                <target>Civilité</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

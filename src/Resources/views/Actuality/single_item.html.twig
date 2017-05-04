@@ -1,0 +1,57 @@
+{% set modalId = random(100000) %}
+<a
+    {% if actuality.target != constant('MMC\\FestivalBundle\\Model\\LinkTarget::MODAL_IMG') %}
+        href="{{ actuality.link }}"
+    {% endif %}
+class="actuality-link item-link"
+title="{{ actuality.title ~ ' - ' ~ actuality.contents }}"
+{% if actuality.target == constant('MMC\\FestivalBundle\\Model\\LinkTarget::BLANK') %}
+    target="blank"
+{% elseif actuality.target in [constant('MMC\\FestivalBundle\\Model\\LinkTarget::MODAL_REMOTE'), constant('MMC\\FestivalBundle\\Model\\LinkTarget::MODAL_IMG')] %}
+    data-toggle="modal" data-target="#modal-actuatity-{{ 'r'~modalId }}"
+{% endif %}
+>
+    <div class="art-img">
+        {% if actuality.illustration %}
+            <img src="{{ actuality.illustration|imagine_filter('actuality_illustration') }}" alt="{{ getAlt(actuality.alt|default('')) }}" />
+        {% endif %}
+    </div>
+    <h1 class="art-title visible-xs-inline-block item-title">
+        {{ actuality.title }}
+    </h1>
+    <h1 class="art-title visible-sm-inline-block visible-md-inline-block item-title">
+        {{ actuality.title|truncate(20, false, '...') }}
+    </h1>
+    <h1 class="art-title visible-lg-inline-block item-title">
+        {{ actuality.title|truncate(26, false, '...') }}
+    </h1>
+    <p class="art-link visible-xs-inline-block contents-xs">
+        &gt; {{ actuality.contents }}
+    </p>
+    <p class="art-link visible-sm-inline-block visible-md-inline-block contents-sm-md">
+        &gt; {{ actuality.contents|truncate(50, false, '...') }}
+    </p>
+    <p class="art-link visible-lg-inline-block contents-lg">
+        &gt; {{ actuality.contents|truncate(65, false, '...') }}
+    </p>
+</a>
+{% if actuality.target in [constant('MMC\\FestivalBundle\\Model\\LinkTarget::MODAL_REMOTE'), constant('MMC\\FestivalBundle\\Model\\LinkTarget::MODAL_IMG')] %}
+<div class="modal fade" id="modal-actuatity-{{ 'r'~modalId }}" tabindex="-1" role="dialog"
+    aria-labelledby="{{ actuality.title }}">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel">{{ actuality.title }}</h4>
+            </div>
+            <div class="modal-body">
+                {% if actuality.target == constant('MMC\\FestivalBundle\\Model\\LinkTarget::MODAL_IMG') %}
+                    <img src="{{ actuality.link }}" />
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}

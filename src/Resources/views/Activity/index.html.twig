@@ -1,0 +1,120 @@
+{% extends app.request.isXmlHttpRequest ? "MMCFestivalBundle:Activity:ajax_layout.html.twig" : "MMCFestivalBundle:Activity:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+
+    {% if not response.isFake %}
+
+        {% block noFake %}
+            <p class="activity-type-filters">
+                {{ 'filterByActivityType'|trans({}, 'activity') }}
+
+                {% set currentType = app.request.query.get('type') %}
+                {% set routeName = app.request.get('_route') %}
+                {% set routeParams = app.request.get('_route_params') %}
+                {% set params = app.request.get('_route_params')|merge(app.request.query) %}
+
+                <a href="{{ path(routeName, routeParams) }}"
+                    class="{{ currentType is null ? 'active' : '' }}">
+                    {{ 'all'|trans({}, 'activity') }}
+                </a>
+                |
+                <a href="{{ path(routeName, routeParams|merge({type: 'workshop'})) }}"
+                    class="{{ currentType == 'workshop' ? 'active' : '' }}">
+                    {{ 'workshop'|trans({}, 'activity') }}
+                </a>
+                |
+                <a href="{{ path(routeName, routeParams|merge({type: 'conference'})) }}"
+                    class="{{ currentType == 'conference' ? 'active' : '' }}">
+                    {{ 'conference'|trans({}, 'activity') }}
+                </a>
+                |
+                <a href="{{ path(routeName, routeParams|merge({type: 'dedication'})) }}"
+                    class="{{ currentType == 'dedication' ? 'active' : '' }}">
+                    {{ 'dedication'|trans({}, 'activity') }}
+                </a>
+                |
+                <a href="{{ path(routeName, routeParams|merge({type: 'exposure'})) }}"
+                    class="{{ currentType == 'exposure' ? 'active' : '' }}">
+                    {{ 'exposure'|trans({}, 'activity') }}
+                </a>
+                |
+                <a href="{{ path(routeName, routeParams|merge({type: 'show'})) }}"
+                    class="{{ currentType == 'show' ? 'active' : '' }}">
+                    {{ 'show'|trans({}, 'activity') }}
+                </a>
+            </p>
+
+            {% if response.nbResults != null %}
+                <div id="activites" class="row">
+                    {% for activity in response.list %}
+                        <div class="col-sm-6 col-md-4">
+                            {% include 'MMCCardBundle:Card:card_system.html.twig' with {
+                                card: activity,
+                                template: 'MMCFestivalBundle:Activity:single_item.html.twig',
+                                itemName: 'activity',
+                                itemClass: 'Activity'
+                            } %}
+                        </div>
+                    {% endfor %}
+
+                    {% if response.currentPage < response.nbPages %}
+                        <div class="location-for-next-page text-center">
+                            <a href="{{ path(routeName, params|merge({page: response.currentPage+1})) }}" class="btn btn-festival see-more">
+                                {{ 'see-next'|trans({}, 'activity') }}
+                            </a>
+                        </div>
+                    {% endif %}
+                </div>
+            {% else %}
+                <div class="alert alert-warning" role="alert">
+                    {% if response.request.univers %}
+                        {% if response.request.type %}
+                            {{ 'no_result.univers_with_type'|trans({
+                                '%univers%' : response.request.univers|univers_label,
+                                '%type%': response.request.type|enum_label('MMC\\FestivalBundle\\Model\\ActivityType', 'ActivityType', false)
+                            }, 'activity')}}
+                        {% else %}
+                            {{ 'no_result.univers'|trans({
+                                '%univers%' : response.request.univers|univers_label
+                            }, 'activity')}}
+                        {% endif %}
+                    {% elseif response.request.thisFriday or response.request.thisSaturday or response.request.thisSunday %}
+                        {% if response.request.type %}
+                            {{ 'no_result.days_with_type'|trans({
+                                '%day%' : formatDays(response.request, true)|lower,
+                                '%type%': response.request.type|enum_label('MMC\\FestivalBundle\\Model\\ActivityType', 'ActivityType', false)
+                            }, 'activity')}}
+                        {% else %}
+                            {{ 'no_result.days'|trans({
+                                '%day%' : formatDays(response.request, true)|lower
+                            }, 'activity')}}
+                        {% endif %}
+                    {% elseif response.request.type %}
+                        {{ 'no_result.type'|trans({
+                                '%type%': response.request.type|enum_label('MMC\\FestivalBundle\\Model\\ActivityType', 'ActivityType', false)
+                            }, 'activity')}}
+                    {% else %}
+                        {{ 'no_result'|trans({}, 'activity')}}
+                    {% endif %}
+
+                    <br />
+                    {{ 'no_result.continue'|trans({}, 'activity')}}
+
+                </div>
+            {% endif %}
+        {% endblock noFake %}
+
+    {% else %}
+
+        {% block fake %}
+            {{ renderCarousel('activity') }}
+        {% endblock fake %}
+
+    {% endif %}
+{% endblock content %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ getResourcesPath('js_activity') }}" type="text/javascript"></script>
+{% endblock javascripts %}

@@ -1,0 +1,54 @@
+{% extends "MMCFestivalBundle:Exponent:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="art-title">Pourquoi exposer ?</h2>
+                {{ renderCarousel('become_exponent', {showIndicators: false}) }}
+            </div>
+
+            <div class="col-sm-6 br-rouge">
+                {{ 'become.contact.text'|trans({} ,'exponent')|raw }}
+                {% block files %}
+                {% endblock files %}
+            </div>
+            <div class="col-sm-6">
+                <h2 class="art-title">Formulaire</h2>
+
+                {{ form_errors(form) }}
+
+                <form action="{{ path('mmc_festival_exponent_become') }}" method="post" class="container-fluid">
+                    {{ form_widget(form._token) }}
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6">
+                            {{ form_row(form.firstname) }}
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            {{ form_row(form.lastname) }}
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            {{ form_row(form.email) }}
+                        </div>
+                        <div class="col-xs-12 col-sm-6">
+                            {{ form_row(form.phone) }}
+                        </div>
+                         <div class="col-xs-12 col-sm-12">
+                            {{ form_row(form.socialReason) }}
+                        </div>
+                         <div class="col-xs-12 col-sm-12">
+                            {{ form_row(form.typeProducts) }}
+                        </div>
+                         <div class="col-xs-12 col-sm-12">
+                            {{ form_row(form.message) }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <input type="submit" class="btn btn-festival btn-block" value="Envoyer" />
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+{% endblock content %}

@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="friday">
+                <source>friday</source>
+                <target>Vendredi</target>
+            </trans-unit>
+            <trans-unit id="saturday">
+                <source>saturday</source>
+                <target>Samedi</target>
+            </trans-unit>
+            <trans-unit id="sunday">
+                <source>sunday</source>
+                <target>Dimanche</target>
+            </trans-unit>
+            <trans-unit id="friday.short">
+                <source>friday.short</source>
+                <target>24</target>
+            </trans-unit>
+            <trans-unit id="saturday.short">
+                <source>saturday.short</source>
+                <target>25</target>
+            </trans-unit>
+            <trans-unit id="sunday.short">
+                <source>sunday.short</source>
+                <target>26</target>
+            </trans-unit>
+            <trans-unit id="friday.long">
+                <source>friday.long</source>
+                <target>vendredi 24</target>
+            </trans-unit>
+            <trans-unit id="saturday.long">
+                <source>saturday.long</source>
+                <target>samedi 25</target>
+            </trans-unit>
+            <trans-unit id="sunday.long">
+                <source>sunday.long</source>
+                <target>dimanche 26</target>
+            </trans-unit>
+            <trans-unit id="format.short">
+                <source>format.short</source>
+                <target>
+                    {0}
+                    |{1} %short-1%
+                    |{2} %short-1%-%short-2%
+                    |{3} %short-1%-%short-2%-%short-3%
+                    |]3,Inf[
+                </target>
+            </trans-unit>
+            <trans-unit id="format.long">
+                <source>format.long</source>
+                <target>
+                    {0}
+                    |{1} Le %long-1%
+                    |{2} Les %short-1% et %short-2%
+                    |{3} Les %short-1%, %short-2% et %short-3%
+                    |]3,Inf[
+                </target>
+            </trans-unit>
+
+        </body>
+    </file>
+</xliff>

@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="dedication">
+                <source>dedication</source>
+                <target>Dédicace</target>
+            </trans-unit>
+            <trans-unit id="conference">
+                <source>conference</source>
+                <target>Conférence</target>
+            </trans-unit>
+            <trans-unit id="show">
+                <source>show</source>
+                <target>Spectacle</target>
+            </trans-unit>
+            <trans-unit id="exposure">
+                <source>exposure</source>
+                <target>Exposition</target>
+            </trans-unit>
+            <trans-unit id="workshop">
+                <source>workshop</source>
+                <target>Atelier</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

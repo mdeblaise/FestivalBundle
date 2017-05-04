@@ -1,0 +1,27 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="press">
+                <source>press</source>
+                <target>Presse</target>
+            </trans-unit>
+            <trans-unit id="radio">
+                <source>radio</source>
+                <target>Radio</target>
+            </trans-unit>
+            <trans-unit id="television">
+                <source>television</source>
+                <target>Télévision</target>
+            </trans-unit>
+            <trans-unit id="other">
+                <source>other</source>
+                <target>Autre</target>
+            </trans-unit>
+            <trans-unit id="export.label_Media">
+                <source>export.label_Media</source>
+                <target>Média</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

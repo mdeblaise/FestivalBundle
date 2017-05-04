@@ -1,0 +1,79 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="biography.title">
+                <source>biography.title</source>
+                <target>Biographie</target>
+            </trans-unit>
+            <trans-unit id="participations.title">
+                <source>participations.title</source>
+                <target>Participations</target>
+            </trans-unit>
+            <trans-unit id="noGuest">
+                <source>noGuest</source>
+                <target>Nous vous gardons encore un peu la surprise pour nos invités, mais vous pouvez vous faire une idée du Festival en téléchargeant le programme de 2016.</target>
+            </trans-unit>
+            <trans-unit id="downloadProgram">
+                <source>downloadProgram</source>
+                <target>Télécharger le programme</target>
+            </trans-unit>
+            <trans-unit id="of2016Edition">
+                <source>of2016Edition</source>
+                <target>de l'édition 2016</target>
+            </trans-unit>
+            <trans-unit id="main.title">
+                <source>main.title</source>
+                <target>Invités</target>
+            </trans-unit>
+            <trans-unit id="website">
+                <source>website</source>
+                <target>Site internet :</target>
+            </trans-unit>
+            <trans-unit id="participateTo">
+                <source>participateTo</source>
+                <target>Participe à</target>
+            </trans-unit>
+            <trans-unit id="allGuest">
+                <source>allGuest</source>
+                <target>Tous les invités</target>
+            </trans-unit>
+            <trans-unit id="allGuest.short">
+                <source>allGuest.short</source>
+                <target>Tous</target>
+            </trans-unit>
+            <trans-unit id="guestOfHonor">
+                <source>guestOfHonor</source>
+                <target>Invités à l'honneur</target>
+            </trans-unit>
+            <trans-unit id="guestOfHonor.short">
+                <source>guestOfHonor.short</source>
+                <target>À l'honneur</target>
+            </trans-unit>
+            <trans-unit id="see-next">
+                <source>see-next</source>
+                <target>Voir plus d'invités</target>
+            </trans-unit>
+            <trans-unit id="no_result.continue">
+                <source>no_result.continue</source>
+                <target>Merci pour votre patience et parcourez le reste du programme en attendant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.univers">
+                <source>no_result.univers</source>
+                <target>Aucun invité pour l'univers "%univers%" n'est enregistré pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.days">
+                <source>no_result.days</source>
+                <target>Aucune invité n'est enregistré pour %day% pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result.guestOfHonor">
+                <source>no_result.guestOfHonor</source>
+                <target>Aucun invité d'honneur n'est enregistré pour l'instant.</target>
+            </trans-unit>
+            <trans-unit id="no_result">
+                <source>no_result</source>
+                <target>Aucun invité d'enregistré pour le moment</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

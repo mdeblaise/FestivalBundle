@@ -1,0 +1,54 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="form_firstname">
+                <source>form_firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="form_lastname">
+                <source>form_lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="form_email">
+                <source>form_email</source>
+                <target>Adresse e-mail</target>
+            </trans-unit>
+            <trans-unit id="form_phone">
+                <source>form_phone</source>
+                <target>Numéro de téléphone</target>
+            </trans-unit>
+            <trans-unit id="form_birthday">
+                <source>form_birthday</source>
+                <target>Date de naissance</target>
+            </trans-unit>
+            <trans-unit id="form_univers">
+                <source>form_univers</source>
+                <target>Quel(s) univers vous intéresse ?</target>
+            </trans-unit>
+            <trans-unit id="form_why_wish_you_join">
+                <source>form_why_wish_you_join</source>
+                <target>Pourquoi souhaitez-vous intégrer le staff ?</target>
+            </trans-unit>
+            <trans-unit id="form_what_do_you_like_to_do">
+                <source>form_what_do_you_like_to_do</source>
+                <target>Qu'est ce que vous aimeriez idéalement faire ?</target>
+            </trans-unit>
+            <trans-unit id="form_availabilities">
+                <source>form_availabilities</source>
+                <target>Quelles sont vos disponibilités ?</target>
+            </trans-unit>
+            <trans-unit id="staff.text">
+                <source>staff.text</source>
+                <target><![CDATA[
+                    Vous voulez faire partie du staff du Festival ?<br />
+                    Vous avez toujours voulu voir les coulisses de votre festival préféré ?<br />
+                    Vous êtes débrouillard et souhaitez mettre la main à la pâte ?<br /><br />
+
+                     N'hésitez plus, remplissez le formulaire et rejoignez nos équipes.
+                    ]]>
+                </target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

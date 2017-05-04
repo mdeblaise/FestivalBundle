@@ -1,0 +1,27 @@
+<a href="{{ path('mmc_festival_activity_view', { id: activity.card.id }) }}" class="activity-link item-link">
+    <div class="inv-img activity-img">
+        {% if activity.vignette %}
+            <img src="{{ activity.vignette|imagine_filter('activity_vignette') }}" alt="{{ getAlt(activity.altVignette) }}" title="{{ activity.title }}" />
+            <img src="{{ getResourcesPath('img_activityType') ~ activity.type }}.triangle.png" class="activity-type">
+        {% endif %}
+    </div>
+    <h1 class="art-title visible-xs-inline-block item-title">
+        {{ activity.title }}
+    </h1>
+    <h1 class="art-title visible-sm-inline-block visible-md-inline-block item-title">
+        {{ activity.title|truncate(50, false, '...') }}
+    </h1>
+    <h1 class="art-title visible-lg-inline-block item-title">
+        {{ activity.title|truncate(32, false, '...') }}
+    </h1>
+    <div class="art-detail">
+        {{ activity.type|enum_label('MMC\\FestivalBundle\\Model\\ActivityType', 'ActivityType', false) }}
+        <span class="hidden-md">
+        &#124;&nbsp;{{ activity.univers|univers_label }}
+        </span>
+        {% if activity is present %}
+            &#124;&nbsp;{{ formatDays(activity) }}
+        {% endif %}
+        <span class="{{ universFlagColor(activity.univers|univers_label) }}"></span>
+    </div>
+</a>

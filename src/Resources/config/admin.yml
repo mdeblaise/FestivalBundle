@@ -1,0 +1,105 @@
+services:
+
+    mmc_festival.admin.card_actuality:
+        class: 'MMC\FestivalBundle\Admin\CardActualityAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\CardActuality'
+            - 'MMCCardBundle:CardAdmin'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: CardActuality }
+        calls:
+            - [ setTranslationDomain, [CardActuality]]
+            - [ setDatagridBuilder, ['@mmc_sonata_admin.datagrid_builder']]
+            - [ setModelManager, ['@mmc_card.admin.manager.card']]
+            - [ setUploadableManager, ['@stof_doctrine_extensions.uploadable.manager']]
+
+    mmc_festival.admin.card_activity:
+        class: 'MMC\FestivalBundle\Admin\CardActivityAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\CardActivity'
+            - 'MMCCardBundle:CardAdmin'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: CardActivity }
+        calls:
+            - [ setTranslationDomain, [CardActivity]]
+            - [ setDatagridBuilder, ['@mmc_sonata_admin.datagrid_builder']]
+            - [ setModelManager, ['@mmc_card.admin.manager.card']]
+            - [ setUploadableManager, ['@stof_doctrine_extensions.uploadable.manager']]
+            - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
+
+    mmc_festival.admin.card_guest:
+        class: 'MMC\FestivalBundle\Admin\CardGuestAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\CardGuest'
+            - 'MMCCardBundle:CardAdmin'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: CardGuest }
+        calls:
+            - [ setTranslationDomain, [CardGuest]]
+            - [ setDatagridBuilder, ['@mmc_sonata_admin.datagrid_builder']]
+            - [ setModelManager, ['@mmc_card.admin.manager.card']]
+            - [ setUploadableManager, ['@stof_doctrine_extensions.uploadable.manager']]
+            - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
+
+    mmc_festival.admin.card_exponent:
+        class: 'MMC\FestivalBundle\Admin\CardExponentAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\CardExponent'
+            - 'MMCCardBundle:CardAdmin'
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: CardExponent }
+        calls:
+            - [ setTranslationDomain, [CardExponent]]
+            - [ setDatagridBuilder, ['@mmc_sonata_admin.datagrid_builder']]
+            - [ setModelManager, ['@mmc_card.admin.manager.card']]
+            - [ setUploadableManager, ['@stof_doctrine_extensions.uploadable.manager']]
+            - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
+
+    mmc_festival.admin.contact_press:
+        class: 'MMC\FestivalBundle\Admin\ContactPressAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\ContactPress'
+            - ~
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Export, label: ContactPress }
+        calls:
+            - [ setTranslationDomain, [ContactPress]]
+
+    mmc_festival.admin.get_program:
+        class: 'MMC\FestivalBundle\Admin\GetProgramAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\GetProgram'
+            - ~
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Export, label: GetProgram }
+        calls:
+            - [ setTranslationDomain, [GetProgram]]
+
+    mmc_festival.admin.partner:
+        class: 'MMC\FestivalBundle\Admin\PartnerAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\Partner'
+            - ~
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Content, label: ManagePartners }
+        calls:
+            - [ setTranslationDomain, [Partner]]
+            - [ setUploadableManager, ['@stof_doctrine_extensions.uploadable.manager']]
+
+    mmc_festival.admin.play:
+        class: 'MMC\FestivalBundle\Admin\PlayAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\Play'
+            - ~
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Export, label: Play }
+        calls:
+            - [ setTranslationDomain, [Play]]

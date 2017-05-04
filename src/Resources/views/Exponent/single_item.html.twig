@@ -1,0 +1,19 @@
+<div class="exponent exponent-without-vignette">
+     <img src="{{ getResourcesPath('img_univers') ~ exponent.univers ~ '-small.png' }}"
+        alt="{{ getAlt('') }}"
+        title="{{ exponent.univers|univers_label }}"
+        class="univers"
+    />
+    <p class="title"><b>{{ exponent.name|truncate(30, false, '...') }}</b></p>
+    <p class="location">
+        {% if exponent.stand %}
+            {{ 'location.stand'|trans({'%stand%': exponent.stand}, 'exponent')}}
+        {% endif %}
+        {% if exponent.stand and exponent.level %}
+            {{ 'location.separator'|trans({}, 'exponent')}}
+        {% endif %}
+        {% if exponent.level %}
+            {{ 'location.level'|trans({'%level%': exponent.level}, 'exponent')}}
+        {% endif %}
+    </p>
+</div>

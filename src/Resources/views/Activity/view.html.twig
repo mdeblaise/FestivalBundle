@@ -1,0 +1,23 @@
+{% extends "MMCFestivalBundle:Activity:layout.html.twig" %}
+
+{% block content %}
+    {{ parent() }}
+        <div class="row">
+            <div class="col-sm-12 col-md-12">
+                {% include 'MMCCardBundle:Card:card_system.html.twig' with {
+                    card: activity,
+                    template: 'MMCFestivalBundle:Activity:show_details.html.twig',
+                    itemName: 'activity',
+                    itemClass: 'Activity'
+                } %}
+            </div>
+        </div>
+{% endblock content %}
+
+{% block title_content %}
+    {{ activity.title ? activity.title ~ ' - ' : '' }}{{ parent() }}
+{% endblock title_content %}
+
+{% block description_content %}
+    {{ activity.descriptif ? activity.descriptif|striptags|decode_entities|truncate(160 ): '' }}{{ parent() }}
+{% endblock description_content %}
