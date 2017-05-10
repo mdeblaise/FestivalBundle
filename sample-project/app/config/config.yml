@@ -1,0 +1,193 @@
+imports:
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    - { resource: services.yml }
+
+# Put parameters here that don't need to change on each machine where the app is deployed
+# http://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
+parameters:
+    locale: fr
+
+framework:
+    #esi:             ~
+    translator:      { fallbacks: ["%locale%"] }
+    secret:          "%secret%"
+    router:
+        resource: "%kernel.root_dir%/config/routing.yml"
+        strict_requirements: ~
+    form:            ~
+    csrf_protection: ~
+    validation:      { enable_annotations: true }
+    #serializer:      { enable_annotations: true }
+    templating:
+        engines: ['twig']
+    default_locale:  "%locale%"
+    trusted_hosts:   ~
+    trusted_proxies: ~
+    session:
+        # http://symfony.com/doc/current/reference/configuration/framework.html#handler-id
+        handler_id:  session.handler.native_file
+        save_path:   "%kernel.root_dir%/../var/sessions/%kernel.environment%"
+    fragments:       ~
+    http_method_override: true
+    assets: ~
+
+# Twig Configuration
+twig:
+    debug:            "%kernel.debug%"
+    strict_variables: "%kernel.debug%"
+    globals:
+        mmc_fos_user_layout: "MMCFosUserBundle:Default:layout.html.twig"
+    form_themes:
+        - 'SonataCoreBundle:Form:datepicker.html.twig'
+        - 'MMCSonataAdminBundle:Form:image_preview.html.twig'
+        - 'MMCCardBundle:Form:status_validation.html.twig'
+
+# Doctrine Configuration
+doctrine:
+    dbal:
+        driver:   "%database_driver%"
+        host:     "%database_host%"
+        port:     "%database_port%"
+        dbname:   "%database_name%"
+        user:     "%database_user%"
+        password: "%database_password%"
+        charset:  UTF8
+        server_version: "%database_server_version%"
+        types:
+            uuid: 'Ramsey\Uuid\Doctrine\UuidType'
+        # if using pdo_sqlite as your database driver:
+        #   1. add the path in parameters.yml
+        #     e.g. database_path: "%kernel.root_dir%/../var/data/data.sqlite"
+        #   2. Uncomment database_path in parameters.yml.dist
+        #   3. Uncomment next line:
+        #path:     "%database_path%"
+
+    orm:
+        auto_generate_proxy_classes: "%kernel.debug%"
+        naming_strategy: doctrine.orm.naming_strategy.underscore
+        auto_mapping: true
+
+# Swiftmailer Configuration
+swiftmailer:
+    transport: "%mailer_transport%"
+    host:      "%mailer_host%"
+    username:  "%mailer_user%"
+    password:  "%mailer_password%"
+    spool:     { type: memory }
+
+fos_user:
+    db_driver: orm # other valid values are 'mongodb', 'couchdb' and 'propel'
+    firewall_name: main
+    user_class: MMC\FosUserBundle\Entity\User
+
+mmc_fos_user:
+    admin:
+        rolesAvailables: ~
+
+sonata_block:
+    default_contexts: [cms]
+    blocks:
+        # enable the SonataAdminBundle block
+        sonata.admin.block.admin_list:
+            contexts: [admin]
+        sonata.admin.block.search_result:
+            contexts: [admin]
+
+sonata_admin:
+    dashboard:
+        groups:
+           sonata.admin.group.content:
+               label:           Content
+               icon:            '<i class="fa fa-th"></i>'
+               items:
+                   - mmc_festival.admin.card_actuality
+                   - mmc_festival.admin.card_activity
+                   - mmc_festival.admin.card_guest
+                   - mmc_festival.admin.card_exponent
+                   - mmc_festival.admin.partner
+           sonata.admin.group.administration:
+               label:           Administration
+               icon:            '<i class="fa fa-cogs"></i>'
+               items:
+                   - mmc_fos_user_bundle.sonata_admin.user
+           sonata.admin.group.export:
+               label:           Export
+               icon:            '<i class="fa fa-cogs"></i>'
+               items:
+                   - mmc_festival.admin.contact_press
+                   - mmc_festival.admin.get_program
+                   - mmc_festival.admin.play
+                   - mmc_festival.admin.contact_staff
+                   - mmc_festival.admin.contact_exponent
+    templates:
+        layout: MMCSonataAdminBundle::sonata_layout.html.twig
+    security:
+        handler: sonata.admin.security.handler.role
+
+liip_imagine :
+    resolvers :
+        default :
+            web_path : ~
+    filter_sets :
+        cache : ~
+        admin_thumb:
+            quality: 75
+            filters:
+                thumbnail: { size : [90, 50], mode : outbound }
+        admin_poster:
+            quality: 85
+            filters:
+                thumbnail: { size : [400, 300], mode : inset }
+        actuality_illustration:
+            quality: 85
+            filters:
+                upscale: { min : [424, 0] }
+                upscale_bis: { min : [0, 185] }
+                thumbnail: { size : [424, 185], mode : outbound }
+        activity_vignette:
+            quality: 85
+            filters:
+                upscale: { min : [272, 0] }
+                upscale_bis: { min : [0, 232] }
+                thumbnail: { size : [272, 232], mode : outbound }
+        activity_cover_photo:
+            quality: 85
+            filters:
+                upscale: { min : [863, 0] }
+                upscale_bis: { min : [0, 349] }
+                thumbnail: { size : [863, 349], mode : outbound }
+        guest_vignette:
+            quality: 85
+            filters:
+                upscale: { min : [272, 0] }
+                upscale_bis: { min : [0, 232] }
+                thumbnail: { size : [272, 232], mode : outbound }
+        guest_cover_photo:
+            quality: 85
+            filters:
+                upscale: { min : [863, 0] }
+                upscale_bis: { min : [0, 349] }
+                thumbnail: { size : [863, 349], mode : outbound }
+        exponent_vignette:
+            quality: 85
+            filters:
+                upscale: { min : [116, 0] }
+                upscale_bis: { min : [0, 116] }
+                thumbnail: { size : [116, 116], mode : outbound }
+        partner_logo:
+            quality: 85
+            filters:
+                thumbnail: { size : [270, 153], mode : inset }
+                background: { size: [270, 153] }
+
+mmc_festival:
+    current_edition: 2017
+    path: ~
+    google_analytics: ~
+    carousel:
+        home: ~
+        become_exponent: ~
+    schedule:
+        reference_date: '2017-10-07'
+    univers_class: 'AppBundle\Model\Univers'

@@ -1,0 +1,73 @@
+# To get started with security, check out the documentation:
+# http://symfony.com/doc/current/security.html
+security:
+
+    encoders:
+        FOS\UserBundle\Model\UserInterface: bcrypt
+
+    role_hierarchy:
+
+        ROLE_PLAY:
+
+        ROLE_CARD_REPORTER:
+            - ROLE_BO
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTUALITY_VIEW
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTUALITY_EDIT
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTUALITY_LIST
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTUALITY_CREATE
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTIVITY_VIEW
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTIVITY_EDIT
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTIVITY_LIST
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTIVITY_CREATE
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_GUEST_VIEW
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_GUEST_EDIT
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_GUEST_LIST
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_GUEST_CREATE
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_EXPONENT_VIEW
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_EXPONENT_EDIT
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_EXPONENT_LIST
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_EXPONENT_CREATE
+        ROLE_CARD_ADMIN:
+            - ROLE_BO
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTUALITY_ALL
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_ACTIVITY_ALL
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_GUEST_ALL
+            - ROLE_MMC_FESTIVAL_ADMIN_CARD_EXPONENT_ALL
+        ROLE_EXPORT:
+            - ROLE_BO
+            - ROLE_MMC_FESTIVAL_ADMIN_GET_PROGRAM_ALL
+            - ROLE_MMC_FESTIVAL_ADMIN_CONTACT_PRESS_ALL
+            - ROLE_MMC_FESTIVAL_ADMIN_PLAY_ALL
+        ROLE_ADMIN:
+            - ROLE_PLAY
+            - ROLE_CARD_ADMIN
+            - ROLE_EXPORT
+            - ROLE_MMC_FESTIVAL_ADMIN_PARTNER_ALL
+
+        ROLE_SUPER_ADMIN:       [ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        mmc_fos_user:
+            id: fos_user.user_provider.username_email
+
+    firewalls:
+        main:
+            pattern: ^/
+            form_login:
+                provider: mmc_fos_user
+                csrf_token_generator: security.csrf.token_manager
+                default_target_path:     /admin
+            logout:
+                path:     /logout
+                target:   /login
+            anonymous:    true
+            remember_me:
+                secret:   '%secret%'
+                lifetime: 604800 # 1 week in seconds
+                path:     /
+
+    access_control:
+        - { path: ^/login$, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
+        - { path: ^/admin/, role: ROLE_ADMIN }
