@@ -115,3 +115,14 @@ services:
         calls:
             - [ setTranslationDomain, [ContactStaff]]
             - [ setUniversClass, ['%mmc_festival.univers.class%']]
+
+    mmc_festival.admin.contact_exponent:
+        class: 'MMC\FestivalBundle\Admin\ContactExponentAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\ContactExponent'
+            - ~
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Export, label: ContactExponent }
+        calls:
+            - [ setTranslationDomain, [ContactExponent]]

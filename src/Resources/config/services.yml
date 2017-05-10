@@ -144,7 +144,7 @@ services:
             - '@templating'
             - '@router'
             - '@form.factory'
-            - '@mmc_festival.RegisterProcessor.exponent'
+            - '@mmc_festival.DoctrineManager.exponent'
             - '@mmc_festival.ChainLister.Exponent'
             - '@mmc_festival.RequestFactory.Exponent'
             - '@security.authorization_checker'
@@ -168,6 +168,9 @@ services:
         class: MMC\FestivalBundle\Services\Exponent\FakeLister
         tags:
             - { name: mmc_festival.ChainLister.Exponent }
+    mmc_festival.DoctrineManager.exponent:
+        class: MMC\FestivalBundle\Services\Exponent\DoctrineManager
+        arguments: ['@doctrine.orm.default_entity_manager']
 
     #DATEREFERENCE
     mmc_festival.DateReference:
@@ -283,7 +286,6 @@ services:
             - '@mmc_festival.schedule.provider'
         tags:
             - { name: form.type }
-
     mmc_festival.DoctrineManager.staff:
         class: MMC\FestivalBundle\Services\Staff\DoctrineManager
         arguments: ['@doctrine.orm.default_entity_manager']

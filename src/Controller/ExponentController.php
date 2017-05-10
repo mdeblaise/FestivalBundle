@@ -2,9 +2,9 @@
 
 namespace MMC\FestivalBundle\Controller;
 
-use MMC\FestivalBundle\Entity\Exponent;
-use MMC\FestivalBundle\Form\ContactExponent;
+use MMC\FestivalBundle\Entity\ContactExponent;
 use MMC\FestivalBundle\Form\ContactExponentType;
+use MMC\FestivalBundle\Services\Exponent\DoctrineManager;
 use MMC\FestivalBundle\Services\Exponent\RequestFactory;
 use MMC\FestivalBundle\Services\Lister\ChainLister;
 use MMC\FestivalBundle\Services\RegisterProcessor;
@@ -25,7 +25,7 @@ class ExponentController
 
     protected $formFactory;
 
-    protected $registerProcessor;
+    protected $doctrineManager;
 
     protected $chainLister;
 
@@ -35,7 +35,7 @@ class ExponentController
         EngineInterface $templating,
         RouterInterface $router,
         FormFactoryInterface $formFactory,
-        RegisterProcessor $registerProcessor,
+        DoctrineManager $doctrineManager,
         ChainLister $chainLister,
         RequestFactory $requestFactory,
         AuthorizationCheckerInterface $authorizationChecker
@@ -43,7 +43,7 @@ class ExponentController
         $this->templating = $templating;
         $this->router = $router;
         $this->formFactory = $formFactory;
-        $this->registerProcessor = $registerProcessor;
+        $this->doctrineManager = $doctrineManager;
         $this->chainLister = $chainLister;
         $this->requestFactory = $requestFactory;
         $this->authorizationChecker = $authorizationChecker;
@@ -88,7 +88,7 @@ class ExponentController
 
     protected function processForm(Request $request, $form)
     {
-        $this->registerProcessor->process($form->getData());
+        $this->doctrineManager->create($form->getData());
     }
 
     public function confirmAction(Request $request)
