@@ -2,9 +2,9 @@
 
 namespace MMC\FestivalBundle\Controller;
 
-use MMC\FestivalBundle\Form\ContactStaff;
+use MMC\FestivalBundle\Entity\ContactStaff;
 use MMC\FestivalBundle\Form\ContactStaffType;
-use MMC\FestivalBundle\Services\RegisterProcessor;
+use MMC\FestivalBundle\Services\Staff\DoctrineManager;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
@@ -25,12 +25,12 @@ class StaffController
         EngineInterface $templating,
         RouterInterface $router,
         FormFactoryInterface $formFactory,
-        RegisterProcessor $registerProcessor
+        DoctrineManager $doctrineManager
     ) {
         $this->templating = $templating;
         $this->router = $router;
         $this->formFactory = $formFactory;
-        $this->registerProcessor = $registerProcessor;
+        $this->doctrineManager = $doctrineManager;
     }
 
     public function indexAction(Request $request)
@@ -54,7 +54,7 @@ class StaffController
 
     protected function processForm(Request $request, $form)
     {
-        $this->registerProcessor->process($form->getData());
+        $this->doctrineManager->create($form->getData());
     }
 
     public function confirmAction(Request $request)

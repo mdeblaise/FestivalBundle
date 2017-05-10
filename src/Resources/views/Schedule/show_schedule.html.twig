@@ -1,0 +1,7 @@
+{% extends "SonataAdminBundle:CRUD:base_show_field.html.twig" %}
+
+{% block field %}
+    {% for availability in value %}
+        <li>{{ availability.day|trans({}, 'schedule') }} {{ availability.part|trans({}, 'schedule') }}</li>
+    {% endfor %}
+{% endblock %}

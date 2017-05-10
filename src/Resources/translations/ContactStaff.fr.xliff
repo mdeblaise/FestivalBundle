@@ -1,0 +1,95 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="en" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="Created At">
+                <source>Created At</source>
+                <target>Enregistré le</target>
+            </trans-unit>
+            <trans-unit id="Firstname">
+                <source>Firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="Lastname">
+                <source>Lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="Email">
+                <source>Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="Phone">
+                <source>Phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="Action">
+                <source>Action</source>
+                <target>Action</target>
+            </trans-unit>
+            <trans-unit id="Birthday">
+                <source>Birthday</source>
+                <target>Date de naissance</target>
+            </trans-unit>
+            <trans-unit id="Univers">
+                <source>Univers</source>
+                <target>Univers</target>
+            </trans-unit>
+            <trans-unit id="Why Wish You Join">
+                <source>Why Wish You Join</source>
+                <target>Pourquoi souhaitez-vous intégrer le staff ?</target>
+            </trans-unit>
+            <trans-unit id="What Do You Like To Do">
+                <source>What Do You Like To Do</source>
+                <target>Qu'est ce que vous aimeriez idéalement faire ?</target>
+            </trans-unit>
+            <trans-unit id="Availabilities">
+                <source>Availabilities</source>
+                <target>Disponibilités</target>
+            </trans-unit>
+            <trans-unit id="ContactStaff">
+                <source>ContactStaff</source>
+                <target>Contact Staff</target>
+            </trans-unit>
+            <trans-unit id="Contact Staff List">
+                <source>Contact Staff List</source>
+                <target>Liste du staff</target>
+            </trans-unit>
+            <trans-unit id="Detail">
+                <source>Detail</source>
+                <target>Détail</target>
+            </trans-unit>
+            <trans-unit id="export.label_CreatedAt">
+                <source>export.label_CreatedAt</source>
+                <target>Enregistré le</target>
+            </trans-unit>
+            <trans-unit id="export.label_Firstname">
+                <source>export.label_Firstname</source>
+                <target>Prénom</target>
+            </trans-unit>
+            <trans-unit id="export.label_Lastname">
+                <source>export.label_Lastname</source>
+                <target>Nom</target>
+            </trans-unit>
+            <trans-unit id="export.label_Email">
+                <source>export.label_Email</source>
+                <target>Email</target>
+            </trans-unit>
+            <trans-unit id="export.label_Phone">
+                <source>export.label_Phone</source>
+                <target>Téléphone</target>
+            </trans-unit>
+            <trans-unit id="export.label_Birthday">
+                <source>export.label_Birthday</source>
+                <target>Date de naissance</target>
+            </trans-unit>
+            <trans-unit id="export.label_WhyWishYouJoin">
+                <source>export.label_WhyWishYouJoin</source>
+                <target>Pourquoi souhaitez-vous intégrer le staff ?</target>
+            </trans-unit>
+            <trans-unit id="export.label_WhatDoYouLikeToDo">
+                <source>export.label_WhatDoYouLikeToDo</source>
+                <target>Qu'est ce que vous aimeriez idéalement faire ?</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

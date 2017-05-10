@@ -2,6 +2,10 @@
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
     <file source-language="en" datatype="plaintext" original="file.ext">
         <body>
+            <trans-unit id="export.label_Univers">
+                <source>export.label_Univers</source>
+                <target>Univers</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

@@ -265,7 +265,7 @@ services:
             - '@templating'
             - '@router'
             - '@form.factory'
-            - '@mmc_festival.RegisterProcessor.staff'
+            - '@mmc_festival.DoctrineManager.staff'
 
     mmc_festival.RegisterProcessor.staff:
         class: MMC\FestivalBundle\Services\RegisterProcessor
@@ -283,6 +283,10 @@ services:
             - '@mmc_festival.schedule.provider'
         tags:
             - { name: form.type }
+
+    mmc_festival.DoctrineManager.staff:
+        class: MMC\FestivalBundle\Services\Staff\DoctrineManager
+        arguments: ['@doctrine.orm.default_entity_manager']
 
     #PRESS
     mmc_festival.Controller.Press:

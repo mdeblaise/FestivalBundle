@@ -103,3 +103,15 @@ services:
             - { name: sonata.admin, manager_type: orm, group: Export, label: Play }
         calls:
             - [ setTranslationDomain, [Play]]
+
+    mmc_festival.admin.contact_staff:
+        class: 'MMC\FestivalBundle\Admin\ContactStaffAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\ContactStaff'
+            - ~
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Export, label: ContactStaff }
+        calls:
+            - [ setTranslationDomain, [ContactStaff]]
+            - [ setUniversClass, ['%mmc_festival.univers.class%']]
