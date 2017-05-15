@@ -1,0 +1,10 @@
+{% extends 'SonataAdminBundle:CRUD:base_show.html.twig' %}
+
+
+{% block show %}
+    {{ parent() }}
+    {#% if admin.hasroute('add_exponent') and admin.hasAccess('add_exponent', object) %#}
+                <a class="btn btn-success" href="{{ admin.generateObjectUrl('add_exponent', object) }}"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'link_action_add_exponent'|trans({}, 'ContactExponent') }}</a>
+    {#% endif %#}
+
+{% endblock show %}

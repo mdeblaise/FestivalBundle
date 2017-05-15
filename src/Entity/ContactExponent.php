@@ -72,6 +72,11 @@ class ContactExponent
      */
     protected $message;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    protected $added;
+
 
     public function __construct()
     {
@@ -200,6 +205,23 @@ class ContactExponent
     {
         $this->message = $message;
 
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getAdded()
+    {
+        return $this->added;
+    }
+
+    /**
+     * @param boolean $added
+     */
+    public function setAdded($added)
+    {
+        $this->added = $added;
         return $this;
     }
 

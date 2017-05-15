@@ -121,7 +121,7 @@ services:
         arguments:
             - ~
             - 'MMC\FestivalBundle\Entity\ContactExponent'
-            - ~
+            - 'MMCFestivalBundle:CardExponentAdmin'
         tags:
             - { name: sonata.admin, manager_type: orm, group: Export, label: ContactExponent }
         calls:

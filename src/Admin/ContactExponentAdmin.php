@@ -15,9 +15,17 @@ class ContactExponentAdmin extends AbstractAdmin
     protected $baseRouteName = 'mmc_admin_contact_exponent';
     protected $baseRoutePattern = 'contactExponent';
 
+    public function configure()
+    {
+        parent:: configure();
+
+        $this->setTemplate('show', 'MMCFestivalBundle:Admin:show.html.twig');
+    }
+
     protected function configureRoutes(RouteCollection $collection)
     {
-        $collection->clearExcept(['export', 'list', 'show']);
+        $collection->add('add_exponent', $this->getRouterIdParameter().'/addExponent');
+        $collection->clearExcept(['export', 'list', 'show', 'add_exponent']);
     }
 
     public function getBatchActions()
@@ -29,7 +37,6 @@ class ContactExponentAdmin extends AbstractAdmin
     {
         $datagridMapper
             ->add('createdAt', 'doctrine_orm_date_range', ['field_type' => 'sonata_type_date_range_picker'])
-            ->add('socialReason')
         ;
     }
 

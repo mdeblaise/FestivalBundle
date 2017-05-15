@@ -82,6 +82,10 @@
                 <source>export.label_Message</source>
                 <target>Message</target>
             </trans-unit>
+            <trans-unit id="link_action_add_exponent">
+                <source>link_action_add_exponent</source>
+                <target>Ajouter l'exposant</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
