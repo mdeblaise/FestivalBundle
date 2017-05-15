@@ -348,6 +348,28 @@ services:
        tags:
            - { name: form.type, alias: mmc_festival.PlayType }
 
+    #DOCTRINE
+    mmc_festival.doctrine.edition_listener:
+        class: MMC\FestivalBundle\Services\Doctrine\EditionListener
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    mmc_festival.doctrine.related_edition_listener:
+        class: MMC\FestivalBundle\Services\Doctrine\RelatedEditionListener
+        tags:
+            - { name: doctrine.event_subscriber }
+
+    mmc_festival.provider.card:
+        class: MMC\FestivalBundle\Services\Doctrine\CardProvider
+        arguments: ['@doctrine.orm.default_entity_manager']
+
+    #EDITION
+    mmc_festival.provider.edition:
+        class: MMC\FestivalBundle\Services\Edition\EditionProvider
+        arguments: ['@doctrine.orm.default_entity_manager']
+
+
+
 parameters:
     mmc_festival.maxPerPage.Activity: 12
     mmc_festival.supportLimit.Activity: 10

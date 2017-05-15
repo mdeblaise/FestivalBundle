@@ -132,7 +132,7 @@ services:
         arguments:
             - ~
             - 'MMC\FestivalBundle\Entity\Edition'
-            - ~
+            - 'MMCFestivalBundle:EditionAdmin'
         tags:
             - { name: sonata.admin, manager_type: orm, group: Export, label: EditionManagement }
         calls:

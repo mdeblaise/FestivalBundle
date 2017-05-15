@@ -6,6 +6,71 @@
                 <source>EditionManagement</source>
                 <target>Gestion des éditions</target>
             </trans-unit>
+            <trans-unit id="Year">
+                <source>Year</source>
+                <target>Année</target>
+            </trans-unit>
+            <trans-unit id="Current">
+                <source>Current</source>
+                <target>En cours</target>
+            </trans-unit>
+            <trans-unit id="current_edition_button">
+                <source>current_edition_button</source>
+                <target>Mettre 'En cours'</target>
+            </trans-unit>
+            <trans-unit id="title_validate">
+                <source>title_validate</source>
+                <target>Validation de l'édition en cours</target>
+            </trans-unit>
+            <trans-unit id="btn_validate">
+                <source>btn_validate</source>
+                <target>Valider</target>
+            </trans-unit>
+            <trans-unit id="delete_or">
+                <source>delete_or</source>
+                <target>ou</target>
+            </trans-unit>
+            <trans-unit id="link_action_show">
+                <source>link_action_show</source>
+                <target>Retour</target>
+            </trans-unit>
+            <trans-unit id="title_validate_duplication">
+                <source>title_validate_duplication</source>
+                <target>Voulez-vous vraiment dupliquer pour l'année </target>
+            </trans-unit>
+            <trans-unit id="Edition Name">
+                <source>Edition Name</source>
+                <target>Edition</target>
+            </trans-unit>
+            <trans-unit id="Created At">
+                <source>Created At</source>
+                <target>Ajouté le</target>
+            </trans-unit>
+            <trans-unit id="Reference Date">
+                <source>Reference Date</source>
+                <target>Date de référence</target>
+            </trans-unit>
+            <trans-unit id="Festival Length">
+                <source>Festival Length</source>
+                <target>Durée du festival (jours)</target>
+            </trans-unit>
+            <trans-unit id="Preparation Length">
+                <source>Preparation Length</source>
+                <target>Durée des préparations (jours)</target>
+            </trans-unit>
+            <trans-unit id="Action">
+                <source>Action</source>
+                <target>Action</target>
+            </trans-unit>
+            <trans-unit id="Edition List">
+                <source>Edition List</source>
+                <target>Liste des éditions</target>
+            </trans-unit>
+            <trans-unit id="action_duplicate_year">
+                <source>action_duplicate_year</source>
+                <target>Dupliquer pour l'édition : </target>
+            </trans-unit>
+
         </body>
     </file>
 </xliff>

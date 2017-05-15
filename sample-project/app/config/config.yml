@@ -38,6 +38,7 @@ twig:
     strict_variables: "%kernel.debug%"
     globals:
         mmc_fos_user_layout: "MMCFosUserBundle:Default:layout.html.twig"
+        edition_provider: '@mmc_festival.provider.edition'
     form_themes:
         - 'SonataCoreBundle:Form:datepicker.html.twig'
         - 'MMCSonataAdminBundle:Form:image_preview.html.twig'

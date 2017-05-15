@@ -1,0 +1,3 @@
+{% if not object.current %}
+    <a class="btn btn-sm btn-warning"  href="{{ admin.generateObjectUrl('currentEdition', object) }}">{{ 'current_edition_button'|trans({}, 'EditionManagement') }}</a>
+{% endif %}

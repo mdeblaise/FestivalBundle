@@ -1,10 +1,9 @@
-{% extends 'SonataAdminBundle:CRUD:base_show.html.twig' %}
-
+{% extends 'MMCCardBundle:Card:show.html.twig' %}
 
 {% block show %}
-    {{ parent() }}
-    {#% if admin.hasroute('add_exponent') and admin.hasAccess('add_exponent', object) %#}
-                <a class="btn btn-success" href="{{ admin.generateObjectUrl('add_exponent', object) }}"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'link_action_add_exponent'|trans({}, 'ContactExponent') }}</a>
-    {#% endif %#}
+     {{ parent() }}
 
+    <a class="btn btn-warning" href="{{ admin.generateObjectUrl('duplicate_year', object) }}">
+        <i class="fa fa-files-o" aria-hidden="true"></i> {{ 'action_duplicate_year'|trans({}, 'EditionManagement') ~ edition_provider.currentEdition.name }}
+    </a>
 {% endblock show %}
