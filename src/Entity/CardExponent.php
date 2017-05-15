@@ -31,6 +31,11 @@ class CardExponent extends AbstractCard
      */
     protected $items;
 
+    /**
+     * @ORM\OneToOne(targetEntity="MMC\FestivalBundle\Entity\ContactExponent", mappedBy="exponent")
+     */
+    protected $contactExponent;
+
     public function getId()
     {
         return $this->id;
@@ -94,5 +99,23 @@ class CardExponent extends AbstractCard
     public function __toString()
     {
         return $this->getDraft() ? $this->getDraft()->getName() : $this->getName();
+    }
+
+    /**
+     * @return MMC\FestivalBundle\ContactExponent
+     */
+    public function getContactExponent()
+    {
+        return $this->contactExponent;
+    }
+
+    /**
+     * @param MMC\FestivalBundle\ContactExponent $contactExponent
+     */
+    public function setContactExponent($contactExponent)
+    {
+        $this->contactExponent = $contactExponent;
+
+        return $this;
     }
 }

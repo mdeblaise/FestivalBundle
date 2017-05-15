@@ -7,7 +7,6 @@ use MMC\FestivalBundle\Form\ContactExponentType;
 use MMC\FestivalBundle\Services\Exponent\DoctrineManager;
 use MMC\FestivalBundle\Services\Exponent\RequestFactory;
 use MMC\FestivalBundle\Services\Lister\ChainLister;
-use MMC\FestivalBundle\Services\RegisterProcessor;
 use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;

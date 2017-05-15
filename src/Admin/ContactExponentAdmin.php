@@ -2,7 +2,6 @@
 
 namespace MMC\FestivalBundle\Admin;
 
-use Greg0ire\Enum\Bridge\Symfony\Form\Type\EnumType;
 use MMC\SonataAdminBundle\Admin\AbstractAdmin;
 use MMC\SonataAdminBundle\Datagrid\DTOFieldDescription;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;
@@ -19,7 +18,7 @@ class ContactExponentAdmin extends AbstractAdmin
     {
         parent:: configure();
 
-        $this->setTemplate('show', 'MMCFestivalBundle:Admin:show.html.twig');
+        $this->setTemplate('show', 'MMCFestivalBundle:Admin:contact_exponent_show.html.twig');
     }
 
     protected function configureRoutes(RouteCollection $collection)
@@ -43,13 +42,13 @@ class ContactExponentAdmin extends AbstractAdmin
     protected function configureListFields(ListMapper $listMapper)
     {
         $listMapper
+            ->addIdentifier('socialReason', null, [
+                'sortable' => true,
+            ])
             ->add('createdAt', 'datetime', [
                 'sortable' => true,
                 'format' => 'Y-m-d H:i',
                 'timezone' => 'Europe/Paris',
-            ])
-            ->addIdentifier('socialReason', null, [
-                'sortable' => true,
             ])
             ->add('lastname', null, [
                 'sortable' => true,

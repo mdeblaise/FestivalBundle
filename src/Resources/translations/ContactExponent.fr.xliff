@@ -86,6 +86,10 @@
                 <source>link_action_add_exponent</source>
                 <target>Ajouter l'exposant</target>
             </trans-unit>
+            <trans-unit id="link_action_view_exponent">
+                <source>link_action_view_exponent</source>
+                <target>Voir la fiche exposant</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>

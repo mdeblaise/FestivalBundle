@@ -73,10 +73,10 @@ class ContactExponent
     protected $message;
 
     /**
-     * @ORM\Column(type="boolean")
+     * @ORM\OneToOne(targetEntity="MMC\FestivalBundle\Entity\CardExponent", inversedBy="contactExponent")
+     * @ORM\JoinColumn(name="card_exponent_id", referencedColumnName="id")
      */
-    protected $added;
-
+    protected $exponent;
 
     public function __construct()
     {
@@ -209,19 +209,20 @@ class ContactExponent
     }
 
     /**
-     * @return boolean
+     * @return MMC\FestivalBundle\CardExponent
      */
-    public function getAdded()
+    public function getExponent()
     {
-        return $this->added;
+        return $this->exponent;
     }
 
     /**
-     * @param boolean $added
+     * @param MMC\Festival\CardExponent $exponent
      */
-    public function setAdded($added)
+    public function setExponent($exponent)
     {
-        $this->added = $added;
+        $this->exponent = $exponent;
+
         return $this;
     }
 

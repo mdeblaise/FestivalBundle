@@ -113,7 +113,7 @@ class Exponent extends AbstractCardItem implements ExponentViews
      * @ORM\Column(type="string", length=25)
      * @Assert\Length(max=25)
      */
-    protected $edition;
+    protected $edition = 2017;
 
     public function getId()
     {

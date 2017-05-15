@@ -26,6 +26,13 @@ class CardExponentAdmin extends DTOCardAdmin
         '_sort_by' => 'name',
     ];
 
+    public function configure()
+    {
+        parent:: configure();
+
+        $this->setTemplate('show', 'MMCFestivalBundle:Admin:exponent_show.html.twig');
+    }
+
     public function setUploadableManager(UploadableManager $uploadableManager)
     {
         $this->uploadableManager = $uploadableManager;

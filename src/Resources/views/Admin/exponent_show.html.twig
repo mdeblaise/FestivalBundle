@@ -1,0 +1,15 @@
+{% extends 'MMCCardBundle:Card:show.html.twig' %}
+
+{% block show %}
+    {{ parent() }}
+
+    {% if object.contactExponent %}
+        <p><u>Détail du contact</u></p>
+        <p>{{ 'Lastname'|trans({}, 'ContactExponent')  }} : {{ object.contactExponent.lastname }}
+        <p>{{ 'Firstname'|trans({}, 'ContactExponent')  }} : {{ object.contactExponent.firstname }}
+        <p>{{ 'Email'|trans({}, 'ContactExponent')  }} : {{ object.contactExponent.email }}
+        <p>{{ 'Phone'|trans({}, 'ContactExponent')  }} : {{ object.contactExponent.phone }}
+        <p>{{ 'Message'|trans({}, 'ContactExponent')  }} : {{ object.contactExponent.message }}
+    {% endif %}
+
+{% endblock show %}

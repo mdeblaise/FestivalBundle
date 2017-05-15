@@ -1,0 +1,14 @@
+{% extends 'SonataAdminBundle:CRUD:base_show.html.twig' %}
+
+{% block show %}
+    {{ parent() }}
+
+        {% if object.exponent %}
+            <a class="btn btn-primary"
+            href="{{ admin.configurationPool.adminByAdminCode('mmc_festival.admin.card_exponent').generateObjectUrl('show', object.exponent) }}"
+            ><i class="fa fa-eye" aria-hidden="true"></i> {{ 'link_action_view_exponent'|trans({}, 'ContactExponent') }}</a>
+        {% else %}
+            <a class="btn btn-success" href="{{ admin.generateObjectUrl('add_exponent', object) }}"><i class="fa fa-plus-circle" aria-hidden="true"></i> {{ 'link_action_add_exponent'|trans({}, 'ContactExponent') }}</a>
+        {% endif %}
+
+{% endblock show %}
