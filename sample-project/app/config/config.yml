@@ -111,6 +111,7 @@ sonata_admin:
                icon:            '<i class="fa fa-cogs"></i>'
                items:
                    - mmc_fos_user_bundle.sonata_admin.user
+                   - mmc_festival.admin.edition
            sonata.admin.group.export:
                label:           Export
                icon:            '<i class="fa fa-cogs"></i>'

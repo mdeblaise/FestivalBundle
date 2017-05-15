@@ -126,3 +126,14 @@ services:
             - { name: sonata.admin, manager_type: orm, group: Export, label: ContactExponent }
         calls:
             - [ setTranslationDomain, [ContactExponent]]
+
+    mmc_festival.admin.edition:
+        class: 'MMC\FestivalBundle\Admin\EditionAdmin'
+        arguments:
+            - ~
+            - 'MMC\FestivalBundle\Entity\Edition'
+            - ~
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Export, label: EditionManagement }
+        calls:
+            - [ setTranslationDomain, [EditionManagement]]
