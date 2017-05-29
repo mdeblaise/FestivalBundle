@@ -4,13 +4,17 @@ namespace MMC\FestivalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MMC\CardBundle\Entity\AbstractCard;
+use MMC\FestivalBundle\Entity\Behavior\RelatedEditionInterface;
+use MMC\FestivalBundle\Entity\Behavior\RelatedEditionTrait;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="CardExponent")
  */
-class CardExponent extends AbstractCard
+class CardExponent extends AbstractCard implements RelatedEditionInterface
 {
+    use RelatedEditionTrait;
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -89,11 +93,6 @@ class CardExponent extends AbstractCard
     public function getUnivers()
     {
         return $this->getActiveView() ? $this->getActiveView()->getUnivers() : null;
-    }
-
-    public function getEdition()
-    {
-        return $this->getActiveView() ? $this->getActiveView()->getEdition() : '';
     }
 
     public function __toString()

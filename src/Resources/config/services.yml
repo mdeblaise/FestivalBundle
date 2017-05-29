@@ -152,7 +152,7 @@ services:
         class: MMC\FestivalBundle\Services\Exponent\RequestFactory
         arguments:
             - '%mmc_festival.maxPerPage.Exponent%'
-            - '%mmc_festival.current_edition%'
+            - '@mmc_festival.provider.edition'
         calls:
             - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
     mmc_festival.ChainLister.Exponent:

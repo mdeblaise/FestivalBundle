@@ -23,6 +23,4 @@ interface ExponentViews
     public function getLevel();
 
     public function getUnivers();
-
-    public function getEdition();
 }

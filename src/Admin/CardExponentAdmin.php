@@ -9,6 +9,7 @@ use MMC\FestivalBundle\Services\EnumUniversProviderAwareTrait;
 use MMC\SonataAdminBundle\Datagrid\DTOFieldDescription;
 use MMC\SonataAdminBundle\Form\Type\ImagePreviewType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Stof\DoctrineExtensionsBundle\Uploadable\UploadableManager;
 
 class CardExponentAdmin extends DTOCardAdmin
@@ -31,6 +32,13 @@ class CardExponentAdmin extends DTOCardAdmin
         parent:: configure();
 
         $this->setTemplate('show', 'MMCFestivalBundle:Admin:exponent_show.html.twig');
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+
+        $collection->add('duplicate_year', $this->getRouterIdParameter().'/duplicateYear');
     }
 
     public function setUploadableManager(UploadableManager $uploadableManager)
@@ -60,7 +68,7 @@ class CardExponentAdmin extends DTOCardAdmin
             ->add('draft', 'boolean', [
                 'template' => 'MMCCardBundle:Card:list_draft.html.twig',
             ])
-            ->add('edition', 'string')
+            ->add('editionName')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -90,7 +98,6 @@ class CardExponentAdmin extends DTOCardAdmin
             ['name' => 'descriptif', 'type' => 'text'],
             ['name' => 'stand', 'type' => 'text'],
             ['name' => 'level', 'type' => 'text'],
-            ['name' => 'edition', 'type' => 'string'],
         ];
     }
 
@@ -128,6 +135,16 @@ class CardExponentAdmin extends DTOCardAdmin
         ];
     }
 
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $alias = $query->getRootAlias();
+
+        $query->leftJoin($alias.'.edition', 'e');
+
+        return $query;
+    }
+
     public function getExtraQueryFields()
     {
         return [
@@ -140,7 +157,7 @@ class CardExponentAdmin extends DTOCardAdmin
             'iv.univers',
             'iv.vignette',
             'iv.alt',
-            'iv.edition',
+            'e.name',
         ];
     }
 

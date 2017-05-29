@@ -49,7 +49,7 @@ services:
         arguments:
             - ~
             - 'MMC\FestivalBundle\Entity\CardExponent'
-            - 'MMCCardBundle:CardAdmin'
+            - 'MMCFestivalBundle:CardAdmin'
         tags:
             - { name: sonata.admin, manager_type: orm, group: Content, label: CardExponent }
         calls:

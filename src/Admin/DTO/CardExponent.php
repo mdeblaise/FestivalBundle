@@ -20,7 +20,7 @@ class CardExponent extends Card
 
     protected $vignette;
 
-    protected $edition;
+    protected $editionName;
 
     public function __construct(
         $id,
@@ -36,7 +36,7 @@ class CardExponent extends Card
         $univers,
         $vignette,
         $alt,
-        $edition
+        $editionName
     ) {
         parent::__construct($id, $uuid, $status, $isDraft);
 
@@ -49,7 +49,7 @@ class CardExponent extends Card
         $this->univers = $univers;
         $this->vignette = $vignette;
         $this->alt = $alt;
-        $this->edition = $edition;
+        $this->editionName = $editionName;
     }
 
     /**
@@ -127,8 +127,8 @@ class CardExponent extends Card
     /**
      * @return string
      */
-    public function getEdition()
+    public function getEditionName()
     {
-        return $this->edition;
+        return $this->editionName;
     }
 }

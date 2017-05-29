@@ -39,7 +39,7 @@ class DoctrineLister extends AbstractDoctrineLister
         $queryBuilder = parent::createSupportQueryBuilder($request);
 
         if ($request->getEdition()) {
-            $queryBuilder->andWhere('i.edition = :edition')
+            $queryBuilder->andWhere('c.edition = :edition')
                          ->setParameter('edition', $request->getEdition());
         }
 
@@ -58,7 +58,7 @@ class DoctrineLister extends AbstractDoctrineLister
         }
 
         if ($request->getEdition()) {
-            $queryBuilder->andWhere('i.edition = :edition')
+            $queryBuilder->andWhere('c.edition = :edition')
                          ->setParameter('edition', $request->getEdition());
         }
 

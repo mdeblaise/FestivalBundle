@@ -109,12 +109,6 @@ class Exponent extends AbstractCardItem implements ExponentViews
      */
     private $univers;
 
-    /**
-     * @ORM\Column(type="string", length=25)
-     * @Assert\Length(max=25)
-     */
-    protected $edition = 2017;
-
     public function getId()
     {
         return $this->id;
@@ -270,35 +264,21 @@ class Exponent extends AbstractCardItem implements ExponentViews
         return $this;
     }
 
-    public function getEdition()
+    public function copy($item)
     {
-        return $this->edition;
-    }
-
-    public function setEdition($edition)
-    {
-        $this->edition = $edition;
-
-        return $this;
-    }
-
-    public function duplicate()
-    {
-        $exponent = new self();
-        $exponent->setCard($this->card)
-            ->setName($this->name)
-            ->setDescriptif($this->descriptif)
-            ->setWebsite($this->website)
-            ->setVignette($this->vignette)
-            ->setAlt($this->alt)
-            ->setEmail($this->email)
-            ->setStand($this->stand)
-            ->setLevel($this->level)
-            ->setUnivers($this->univers)
-            ->setEdition($this->edition)
+        $this
+            ->setName($item->getName())
+            ->setDescriptif($item->getDescriptif())
+            ->setWebsite($item->getWebsite())
+            ->setVignette($item->getVignette())
+            ->setAlt($item->getAlt())
+            ->setEmail($item->getEmail())
+            ->setStand($item->getStand())
+            ->setLevel($item->getLevel())
+            ->setUnivers($item->getUnivers())
             ;
 
-        return $exponent;
+        return $this;
     }
 
     public function getSupportedCardClass()
