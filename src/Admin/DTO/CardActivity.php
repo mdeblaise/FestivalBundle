@@ -20,7 +20,7 @@ class CardActivity extends Card
 
     protected $altCoverPhoto;
 
-    protected $edition;
+    protected $editionName;
 
     public function __construct(
         $id,
@@ -37,7 +37,7 @@ class CardActivity extends Card
         $thisFriday,
         $thisSaturday,
         $thisSunday,
-        $edition
+        $editionName
     ) {
         parent::__construct($id, $uuid, $status, $isDraft);
 
@@ -51,7 +51,7 @@ class CardActivity extends Card
         $this->thisFriday = $thisFriday;
         $this->thisSaturday = $thisSaturday;
         $this->thisSunday = $thisSunday;
-        $this->edition = $edition;
+        $this->editionName = $editionName;
     }
 
     /**
@@ -135,10 +135,10 @@ class CardActivity extends Card
     }
 
     /**
-     * @return string
+     * @return type
      */
-    public function getEdition()
+    public function getEditionName()
     {
-        return $this->edition;
+        return $this->editionName;
     }
 }

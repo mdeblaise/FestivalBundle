@@ -4,6 +4,7 @@ namespace MMC\FestivalBundle\Services\Activity;
 
 use MMC\FestivalBundle\Model\ActivityType;
 use MMC\FestivalBundle\Model\Status;
+use MMC\FestivalBundle\Services\Edition\EditionProviderInterface;
 use MMC\FestivalBundle\Services\EnumUniversProviderAwareTrait;
 use MMC\FestivalBundle\Services\Schedule\ScheduleProviderAwareTrait;
 use Symfony\Component\OptionsResolver\Options;
@@ -16,12 +17,12 @@ class RequestFactory
 
     protected $maxPerPage;
 
-    protected $edition;
+    protected $editionProdiver;
 
-    public function __construct($maxPerPage, $currentEdition)
+    public function __construct($maxPerPage, EditionProviderInterface $editionProdiver)
     {
         $this->maxPerPage = $maxPerPage;
-        $this->edition = $currentEdition;
+        $this->editionProdiver = $editionProdiver;
     }
 
     public function create($options = [])
@@ -85,7 +86,7 @@ class RequestFactory
         }
 
         $request->setMaxPerPage($this->maxPerPage);
-        $request->setEdition($this->edition);
+        $request->setEdition($this->editionProdiver->getCurrentEdition());
         $request->setStatus($options['admin'] ? [Status::VALID, Status::DRAFT, Status::CREATING] : [Status::VALID]);
         $request->setUnivers($options['univers']);
         $request->setType($options['type']);

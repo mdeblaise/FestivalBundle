@@ -4,13 +4,18 @@ namespace MMC\FestivalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MMC\CardBundle\Entity\AbstractCard;
+use MMC\FestivalBundle\Entity\Behavior\RelatedEditionInterface;
+use MMC\FestivalBundle\Entity\Behavior\RelatedEditionTrait;
+use Ramsey\Uuid\Uuid;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="CardActivity")
  */
-class CardActivity extends AbstractCard implements ActivityViews
+class CardActivity extends AbstractCard implements ActivityViews, RelatedEditionInterface
 {
+    use RelatedEditionTrait;
+
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
@@ -84,11 +89,6 @@ class CardActivity extends AbstractCard implements ActivityViews
     public function getParticipations()
     {
         return $this->getActiveView() ? $this->getActiveView()->getParticipations() : null;
-    }
-
-    public function getEdition()
-    {
-        return $this->getActiveView() ? $this->getActiveView()->getEdition() : '';
     }
 
     public function __toString()

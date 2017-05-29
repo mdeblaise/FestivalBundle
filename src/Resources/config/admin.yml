@@ -19,7 +19,7 @@ services:
         arguments:
             - ~
             - 'MMC\FestivalBundle\Entity\CardActivity'
-            - 'MMCCardBundle:CardAdmin'
+            - 'MMCFestivalBundle:CardAdmin'
         tags:
             - { name: sonata.admin, manager_type: orm, group: Content, label: CardActivity }
         calls:

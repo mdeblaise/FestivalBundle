@@ -11,8 +11,6 @@ class DoctrineLister extends AbstractDoctrineLister
 {
     protected $repository;
 
-    protected $currentEdition;
-
     public function __construct(
         EntityRepository $repository
     ) {
@@ -31,16 +29,6 @@ class DoctrineLister extends AbstractDoctrineLister
         return parent::support($request);
     }
 
-    /**
-     * @param string $currentEdition
-     */
-    public function setCurrentEdition($currentEdition)
-    {
-        $this->currentEdition = $currentEdition;
-
-        return $this;
-    }
-
     protected function getRepository()
     {
         return $this->repository;
@@ -51,7 +39,7 @@ class DoctrineLister extends AbstractDoctrineLister
         $queryBuilder = parent::createSupportQueryBuilder($request);
 
         if ($request->getEdition()) {
-            $queryBuilder->andWhere('i.edition = :edition')
+            $queryBuilder->andWhere('c.edition = :edition')
                          ->setParameter('edition', $request->getEdition());
         }
 
@@ -90,7 +78,7 @@ class DoctrineLister extends AbstractDoctrineLister
         }
 
         if ($request->getEdition()) {
-            $queryBuilder->andWhere('i.edition = :edition')
+            $queryBuilder->andWhere('c.edition = :edition')
                          ->setParameter('edition', $request->getEdition());
         }
 

@@ -23,6 +23,4 @@ interface ActivityViews
     public function getUnivers();
 
     public function getParticipations();
-
-    public function getEdition();
 }

@@ -214,7 +214,7 @@ class Actuality extends AbstractCardItem implements ActualityViews
         return $this;
     }
 
-    public function duplicate()
+    public function copy($item)
     {
         $actuality = new self();
         $actuality->setCard($this->card)

@@ -6,11 +6,13 @@ use Greg0ire\Enum\Bridge\Symfony\Form\Type\EnumType;
 use MMC\CardBundle\Admin\DTOCardAdmin;
 use MMC\CardBundle\Form\Type\StatusValidationType;
 use MMC\FestivalBundle\Entity\CardGuest;
+use MMC\FestivalBundle\Entity\Edition;
 use MMC\FestivalBundle\Model\ActivityType;
 use MMC\FestivalBundle\Services\EnumUniversProviderAwareTrait;
 use MMC\SonataAdminBundle\Datagrid\DTOFieldDescription;
 use MMC\SonataAdminBundle\Form\Type\ImagePreviewType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Stof\DoctrineExtensionsBundle\Uploadable\UploadableManager;
 
 class CardActivityAdmin extends DTOCardAdmin
@@ -27,6 +29,21 @@ class CardActivityAdmin extends DTOCardAdmin
         '_sort_order' => 'DESC',
         '_sort_by' => 'title',
     ];
+
+    public function configure()
+    {
+        parent:: configure();
+
+        $this->setTemplate('show', 'MMCFestivalBundle:Admin:show.html.twig');
+        $this->setTemplate('validate_duplicate', 'MMCFestivalBundle:Admin:validate_duplicate_year.html.twig');
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+
+        $collection->add('duplicate_year', $this->getRouterIdParameter().'/duplicateYear');
+    }
 
     public function setUploadableManager(UploadableManager $uploadableManager)
     {
@@ -59,13 +76,13 @@ class CardActivityAdmin extends DTOCardAdmin
             ->add('draft', 'boolean', [
                 'template' => 'MMCCardBundle:Card:list_draft.html.twig',
             ])
-            ->add('edition', 'string')
+            ->add('editionName')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
                 ],
             ])
-            ;
+        ;
     }
 
     protected function getItemShowFields($draft = false)
@@ -103,7 +120,6 @@ class CardActivityAdmin extends DTOCardAdmin
             ['name' => 'participations', 'options' => [
                 'template' => 'MMCSonataAdminBundle:CRUD:show_collection.html.twig',
             ]],
-            ['name' => 'edition', 'type' => 'string'],
         ];
     }
 
@@ -148,6 +164,16 @@ class CardActivityAdmin extends DTOCardAdmin
         ];
     }
 
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $alias = $query->getRootAlias();
+
+        $query->leftJoin($alias.'.edition', 'e');
+
+        return $query;
+    }
+
     public function getExtraQueryFields()
     {
         return [
@@ -161,7 +187,7 @@ class CardActivityAdmin extends DTOCardAdmin
             'iv.thisFriday',
             'iv.thisSaturday',
             'iv.thisSunday',
-            'iv.edition',
+            'e.name',
         ];
     }
 
@@ -195,9 +221,6 @@ class CardActivityAdmin extends DTOCardAdmin
             ]),
             'isDraft' => new DTOFieldDescription('draft', 'boolean', [
                 'translation_pattern' => 'is_draft.%s',
-            ]),
-            'edition' => new DTOFieldDescription('edition', 'string', [
-                'translation_pattern' => '%s',
             ]),
         ];
     }

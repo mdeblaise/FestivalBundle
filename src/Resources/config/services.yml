@@ -119,7 +119,7 @@ services:
         class: MMC\FestivalBundle\Services\Activity\RequestFactory
         arguments:
             - '%mmc_festival.maxPerPage.Activity%'
-            - '%mmc_festival.current_edition%'
+            - '@mmc_festival.provider.edition'
         calls:
             - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
             - [ setScheduleProvider, ['@mmc_festival.schedule.provider']]

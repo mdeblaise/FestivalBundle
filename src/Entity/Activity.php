@@ -120,12 +120,6 @@ class Activity extends AbstractCardItem implements ActivityViews, DaysOfPresence
      */
     protected $status;
 
-    /**
-     * @ORM\Column(type="string", length=25)
-     * @Assert\Length(max=25)
-     */
-    protected $edition;
-
     public function __construct()
     {
         $this->participations = new \Doctrine\Common\Collections\ArrayCollection();
@@ -310,38 +304,24 @@ class Activity extends AbstractCardItem implements ActivityViews, DaysOfPresence
         return $participations;
     }
 
-    public function getEdition()
+    public function copy($item)
     {
-        return $this->edition;
-    }
-
-    public function setEdition($edition)
-    {
-        $this->edition = $edition;
+        $this
+            ->setTitle($item->getTitle())
+            ->setDescriptif($item->getDescriptif())
+            ->setVignette($item->getvignette())
+            ->setAltVignette($item->getAltVignette())
+            ->setCoverPhoto($item->getCoverPhoto())
+            ->setAltCoverPhoto($item->getAltCoverPhoto())
+            ->setType($item->getType())
+            ->setUnivers($item->getUnivers())
+            ->setThisFriday($item->getThisFriday())
+            ->setThisSaturday($item->getThisSaturday())
+            ->setThisSunday($item->getThisSunday())
+            ->setParticipations($item->getParticipations())
+        ;
 
         return $this;
-    }
-
-    public function duplicate()
-    {
-        $activity = new self();
-        $activity->setCard($this->card)
-            ->setTitle($this->title)
-            ->setDescriptif($this->descriptif)
-            ->setVignette($this->vignette)
-            ->setAltVignette($this->altVignette)
-            ->setCoverPhoto($this->coverPhoto)
-            ->setAltCoverPhoto($this->altCoverPhoto)
-            ->setType($this->type)
-            ->setUnivers($this->univers)
-            ->setThisFriday($this->thisFriday)
-            ->setThisSaturday($this->thisSaturday)
-            ->setThisSunday($this->thisSunday)
-            ->setParticipations($this->participations)
-            ->setEdition($this->edition)
-            ;
-
-        return $activity;
     }
 
     public function getSupportedCardClass()
