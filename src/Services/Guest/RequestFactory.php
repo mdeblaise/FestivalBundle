@@ -17,10 +17,10 @@ class RequestFactory
 
     protected $edition;
 
-    public function __construct($maxPerPage, $currentEdition)
+    public function __construct($maxPerPage, EditionProviderInterface $editionProdiver)
     {
         $this->maxPerPage = $maxPerPage;
-        $this->edition = $currentEdition;
+        $this->editionProdiver = $editionProdiver;
     }
 
     public function create($options = [])
@@ -73,7 +73,7 @@ class RequestFactory
         }
 
         $request->setMaxPerPage($this->maxPerPage);
-        $request->setEdition($this->edition);
+        $request->setEdition($this->editionProdiver->getCurrentEdition());
         $request->setStatus($options['admin'] ? [Status::VALID, Status::DRAFT, Status::CREATING] : [Status::VALID]);
         $request->setUnivers($options['univers']);
         $request->setGuestOfHonor($options['honor']);

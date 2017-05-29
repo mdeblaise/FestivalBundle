@@ -22,7 +22,7 @@ class CardGuest extends Card
 
     protected $vignette;
 
-    protected $edition;
+    protected $editionName;
 
     public function __construct(
         $id,
@@ -40,7 +40,7 @@ class CardGuest extends Card
         $altVignette,
         $coverPhoto,
         $altCoverPhoto,
-        $edition
+        $editionName
     ) {
         parent::__construct($id, $uuid, $status, $isDraft);
 
@@ -55,7 +55,7 @@ class CardGuest extends Card
         $this->altVignette = $altVignette;
         $this->coverPhoto = $coverPhoto;
         $this->altCoverPhoto = $altCoverPhoto;
-        $this->edition = $edition;
+        $this->editionName = $editionName;
     }
 
     /**
@@ -149,8 +149,8 @@ class CardGuest extends Card
     /**
      * @return string
      */
-    public function getEdition()
+    public function getEditionName()
     {
-        return $this->edition;
+        return $this->editionName;
     }
 }

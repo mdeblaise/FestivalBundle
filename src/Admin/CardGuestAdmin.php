@@ -9,6 +9,7 @@ use MMC\FestivalBundle\Services\EnumUniversProviderAwareTrait;
 use MMC\SonataAdminBundle\Datagrid\DTOFieldDescription;
 use MMC\SonataAdminBundle\Form\Type\ImagePreviewType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
+use Sonata\AdminBundle\Route\RouteCollection;
 use Stof\DoctrineExtensionsBundle\Uploadable\UploadableManager;
 
 class CardGuestAdmin extends DTOCardAdmin
@@ -25,6 +26,20 @@ class CardGuestAdmin extends DTOCardAdmin
         '_sort_order' => 'DESC',
         '_sort_by' => 'name',
     ];
+
+    public function configure()
+    {
+        parent:: configure();
+
+        $this->setTemplate('show', 'MMCFestivalBundle:Admin:show.html.twig');
+    }
+
+    protected function configureRoutes(RouteCollection $collection)
+    {
+        parent::configureRoutes($collection);
+
+        $collection->add('duplicate_year', $this->getRouterIdParameter().'/duplicateYear');
+    }
 
     public function setUploadableManager(UploadableManager $uploadableManager)
     {
@@ -52,7 +67,7 @@ class CardGuestAdmin extends DTOCardAdmin
             ->add('draft', 'boolean', [
                 'template' => 'MMCCardBundle:Card:list_draft.html.twig',
             ])
-            ->add('edition', 'string')
+            ->add('editionName')
             ->add('_action', null, [
                 'actions' => [
                     'show' => [],
@@ -136,6 +151,16 @@ class CardGuestAdmin extends DTOCardAdmin
             ;
     }
 
+    public function createQuery($context = 'list')
+    {
+        $query = parent::createQuery($context);
+        $alias = $query->getRootAlias();
+
+        $query->leftJoin($alias.'.edition', 'e');
+
+        return $query;
+    }
+
     public function getExtraQueryFields()
     {
         return [
@@ -150,7 +175,7 @@ class CardGuestAdmin extends DTOCardAdmin
             'iv.altVignette',
             'iv.coverPhoto',
             'iv.altCoverPhoto',
-            'iv.edition',
+            'e.name',
         ];
     }
 

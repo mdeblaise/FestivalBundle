@@ -118,12 +118,6 @@ class Guest extends AbstractCardItem implements GuestViews, DaysOfPresenceInterf
      */
     protected $status;
 
-    /**
-     * @ORM\Column(type="string", length=25)
-     * @Assert\Length(max=25)
-     */
-    protected $edition;
-
     public function getId()
     {
         return $this->id;
@@ -295,38 +289,29 @@ class Guest extends AbstractCardItem implements GuestViews, DaysOfPresenceInterf
         return $this->getCard() ? $this->getCard()->getValidParticipations() : [];
     }
 
-    public function getEdition()
+    public function getDaysOfPresence()
     {
-        return $this->edition;
+        return $this->getCard() ? $this->getCard()->getDaysOfPresence() : [];
     }
 
-    public function setEdition($edition)
+    public function copy($item)
     {
-        $this->edition = $edition;
+        $this
+            ->setName($item->getName())
+            ->setExternalLink($item->getExternalLink())
+            ->setVignette($item->getVignette())
+            ->setAltVignette($item->getAltVignette())
+            ->setCoverPhoto($item->getCoverPhoto())
+            ->setAltCoverPhoto($item->getAltCoverPhoto())
+            ->setBiography($item->getBiography())
+            ->setGuestOfHonor($item->getGuestOfHonor())
+            ->setThisFriday($item->getThisFriday())
+            ->setThisSaturday($item->getThisSaturday())
+            ->setThisSunday($item->getThisSunday())
+            ->setUnivers($item->getUnivers())
+        ;
 
         return $this;
-    }
-
-    public function duplicate()
-    {
-        $guest = new self();
-        $guest->setCard($this->card)
-            ->setName($this->name)
-            ->setExternalLink($this->externalLink)
-            ->setVignette($this->vignette)
-            ->setAltVignette($this->altVignette)
-            ->setCoverPhoto($this->coverPhoto)
-            ->setAltCoverPhoto($this->altCoverPhoto)
-            ->setBiography($this->biography)
-            ->setGuestOfHonor($this->guestOfHonor)
-            ->setThisFriday($this->thisFriday)
-            ->setThisSaturday($this->thisSaturday)
-            ->setThisSunday($this->thisSunday)
-            ->setUnivers($this->univers)
-            ->setEdition($this->edition)
-            ;
-
-        return $guest;
     }
 
     public function getSupportedCardClass()

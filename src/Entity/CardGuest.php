@@ -5,13 +5,16 @@ namespace MMC\FestivalBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use MMC\CardBundle\Entity\AbstractCard;
 use MMC\FestivalBundle\Model\Status;
+use MMC\FestivalBundle\Entity\Behavior\RelatedEditionInterface;
+use MMC\FestivalBundle\Entity\Behavior\RelatedEditionTrait;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="CardGuest")
  */
-class CardGuest extends AbstractCard implements GuestViews
+class CardGuest extends AbstractCard implements GuestViews, RelatedEditionInterface
 {
+    use RelatedEditionTrait;
     /**
      * @ORM\Column(type="integer")
      * @ORM\Id
