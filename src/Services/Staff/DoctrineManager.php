@@ -3,7 +3,6 @@
 namespace MMC\FestivalBundle\Services\Staff;
 
 use Doctrine\ORM\EntityManager;
-use MMC\FestivalBundle\Entity\ContactStaff;
 
 class DoctrineManager
 {

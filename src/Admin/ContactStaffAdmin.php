@@ -2,7 +2,6 @@
 
 namespace MMC\FestivalBundle\Admin;
 
-use Greg0ire\Enum\Bridge\Symfony\Form\Type\EnumType;
 use MMC\SonataAdminBundle\Admin\AbstractAdmin;
 use MMC\SonataAdminBundle\Datagrid\DTOFieldDescription;
 use Sonata\AdminBundle\Datagrid\DatagridMapper;

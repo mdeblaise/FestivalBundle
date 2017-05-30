@@ -4,7 +4,6 @@ namespace MMC\FestivalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Timestampable\Traits\TimestampableEntity;
-use Greg0ire\Enum\Bridge\Symfony\Validator\Constraint\Enum;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -84,7 +83,6 @@ class ContactStaff
      */
     protected $availabilities;
 
-
     public function __construct()
     {
     }
@@ -124,7 +122,6 @@ class ContactStaff
 
         return $this;
     }
-
 
     /**
      * @return string
