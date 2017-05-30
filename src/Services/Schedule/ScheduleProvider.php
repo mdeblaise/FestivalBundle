@@ -2,6 +2,7 @@
 
 namespace MMC\FestivalBundle\Services\Schedule;
 
+use MMC\FestivalBundle\Services\Edition\EditionProviderInterface;
 use Symfony\Component\Translation\TranslatorInterface;
 
 class ScheduleProvider
@@ -14,15 +15,16 @@ class ScheduleProvider
 
     protected $translator;
 
+    protected $editionProdiver;
+
     public function __construct(
-        $referenceDate,
-        $festivalLength,
-        $preparationLength,
+        EditionProviderInterface $editionProdiver,
         TranslatorInterface $translator
     ) {
-        $this->referenceDate = new \Datetime($referenceDate);
-        $this->festivalLength = $festivalLength;
-        $this->preparationLength = $preparationLength;
+        $currentEdition = $editionProdiver->getCurrentEdition();
+        $this->referenceDate = $currentEdition->getReferenceDate();
+        $this->festivalLength = $currentEdition->getFestivalLength();
+        $this->preparationLength = $currentEdition->getPreparationLength();
         $this->translator = $translator;
     }
 

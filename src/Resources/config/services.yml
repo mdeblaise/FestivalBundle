@@ -29,9 +29,7 @@ services:
     mmc_festival.schedule.provider:
         class: MMC\FestivalBundle\Services\Schedule\ScheduleProvider
         arguments:
-            - '%mmc_festival.schedule.reference_date%'
-            - '%mmc_festival.schedule.festival_length%'
-            - '%mmc_festival.schedule.preparation_length%'
+            - '@mmc_festival.provider.edition'
             - '@translator'
 
     #UNIVERS
