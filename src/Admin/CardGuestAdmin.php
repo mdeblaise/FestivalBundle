@@ -5,12 +5,14 @@ namespace MMC\FestivalBundle\Admin;
 use Greg0ire\Enum\Bridge\Symfony\Form\Type\EnumType;
 use MMC\CardBundle\Admin\DTOCardAdmin;
 use MMC\CardBundle\Form\Type\StatusValidationType;
+use MMC\FestivalBundle\Entity\DaysOfPresence;
 use MMC\FestivalBundle\Services\EnumUniversProviderAwareTrait;
 use MMC\SonataAdminBundle\Datagrid\DTOFieldDescription;
 use MMC\SonataAdminBundle\Form\Type\ImagePreviewType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Stof\DoctrineExtensionsBundle\Uploadable\UploadableManager;
+use Doctrine\ORM\EntityRepository;
 
 class CardGuestAdmin extends DTOCardAdmin
 {
@@ -104,14 +106,12 @@ class CardGuestAdmin extends DTOCardAdmin
             ['name' => 'this_friday', 'type' => 'boolean'],
             ['name' => 'this_saturday', 'type' => 'boolean'],
             ['name' => 'this_sunday', 'type' => 'boolean'],
-            ['name' => 'edition', 'type' => 'string'],
         ];
     }
 
     public function getItemFormFields($draft = false)
     {
         return [
-
             ['name' => 'status', 'type' => StatusValidationType::class, 'options' => ['card' => $this->getSubject()]],
             ['name' => 'name', 'type' => 'text', 'options' => [
                 'attr' => ['data-limits' => '20|30'],
@@ -141,6 +141,15 @@ class CardGuestAdmin extends DTOCardAdmin
             ['name' => 'this_friday', 'type' => 'checkbox',  'options' => ['required' => false]],
             ['name' => 'this_saturday', 'type' => 'checkbox',  'options' => ['required' => false]],
             ['name' => 'this_sunday', 'type' => 'checkbox',  'options' => ['required' => false]],
+            ['name' => 'daysOfPresence', 'type' => 'entity', 'options' => [
+                'multiple' => true,
+                'class' => DaysOfPresence::class,
+                'expanded' => true,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('d')
+                        ->andWhere('d.edition = 1');
+                },
+            ]],
         ];
     }
 

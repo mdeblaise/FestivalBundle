@@ -15,8 +15,6 @@ class EditionAdminController extends CRUDController
 
         $editionProvider = $this->container->get('mmc_festival.provider.edition');
 
-        dump($object, $editionProvider->getCurrentEdition());
-
         if (!$object) {
             throw new NotFoundHttpException(sprintf('unable to find the object with id : %s', $id));
         }

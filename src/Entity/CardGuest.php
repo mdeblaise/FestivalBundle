@@ -41,11 +41,18 @@ class CardGuest extends AbstractCard implements GuestViews, RelatedEditionInterf
      */
     protected $participations;
 
+    /**
+     * @ORM\ManyToMany(targetEntity="MMC\FestivalBundle\Entity\DaysOfPresence",
+     *      inversedBy="guests", cascade={"persist", "remove"})
+     */
+    protected $daysOfPresence;
+
     public function __construct()
     {
         parent::__construct();
 
         $this->participations = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->daysOfPresence = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     public function getId()
@@ -86,6 +93,24 @@ class CardGuest extends AbstractCard implements GuestViews, RelatedEditionInterf
 
         return $participations;
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getDaysOfPresence()
+    {
+        return $this->daysOfPresence;
+    }
+
+    /**
+     * @param ArrayCollection $daysOfPresence
+     */
+    public function setDaysOfPresence($daysOfPresence)
+    {
+        $this->daysOfPresence = $daysOfPresence;
+        return $this;
+    }
+
 
     public function getName()
     {
