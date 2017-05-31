@@ -4,9 +4,9 @@ namespace MMC\FestivalBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use MMC\CardBundle\Entity\AbstractCard;
-use MMC\FestivalBundle\Model\Status;
 use MMC\FestivalBundle\Entity\Behavior\RelatedEditionInterface;
 use MMC\FestivalBundle\Entity\Behavior\RelatedEditionTrait;
+use MMC\FestivalBundle\Model\Status;
 
 /**
  * @ORM\Entity
@@ -108,9 +108,9 @@ class CardGuest extends AbstractCard implements GuestViews, RelatedEditionInterf
     public function setDaysOfPresence($daysOfPresence)
     {
         $this->daysOfPresence = $daysOfPresence;
+
         return $this;
     }
-
 
     public function getName()
     {

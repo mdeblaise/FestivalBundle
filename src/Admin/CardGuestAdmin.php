@@ -2,6 +2,7 @@
 
 namespace MMC\FestivalBundle\Admin;
 
+use Doctrine\ORM\EntityRepository;
 use Greg0ire\Enum\Bridge\Symfony\Form\Type\EnumType;
 use MMC\CardBundle\Admin\DTOCardAdmin;
 use MMC\CardBundle\Form\Type\StatusValidationType;
@@ -12,7 +13,6 @@ use MMC\SonataAdminBundle\Form\Type\ImagePreviewType;
 use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Route\RouteCollection;
 use Stof\DoctrineExtensionsBundle\Uploadable\UploadableManager;
-use Doctrine\ORM\EntityRepository;
 
 class CardGuestAdmin extends DTOCardAdmin
 {

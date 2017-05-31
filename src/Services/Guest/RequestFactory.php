@@ -3,8 +3,8 @@
 namespace MMC\FestivalBundle\Services\Guest;
 
 use MMC\FestivalBundle\Model\Status;
-use MMC\FestivalBundle\Services\EnumUniversProviderAwareTrait;
 use MMC\FestivalBundle\Services\Edition\EditionProviderInterface;
+use MMC\FestivalBundle\Services\EnumUniversProviderAwareTrait;
 use MMC\FestivalBundle\Services\Schedule\ScheduleProviderAwareTrait;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolver;

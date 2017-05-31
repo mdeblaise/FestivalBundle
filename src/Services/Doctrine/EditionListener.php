@@ -5,7 +5,6 @@ namespace MMC\FestivalBundle\Services\Doctrine;
 use Doctrine\Common\EventSubscriber;
 use Doctrine\ORM\Event\LifecycleEventArgs;
 use Doctrine\ORM\Event\OnFlushEventArgs;
-use Doctrine\ORM\Event\PostFlushEventArgs;
 use MMC\FestivalBundle\Entity\DaysOfPresence;
 use MMC\FestivalBundle\Entity\Edition;
 
@@ -86,13 +85,13 @@ class EditionListener implements EventSubscriber
         $festivalLength = $edition->getFestivalLength();
         $referenceDate = $edition->getReferenceDate();
 
-        for ($i=0; $i < $festivalLength; $i++) {
+        for ($i = 0; $i < $festivalLength; ++$i) {
             if ($i == 0) {
                 $dayOfPresence = new DaysOfPresence();
                 $dayOfPresence->setDateOfPresence($referenceDate);
             } else {
                 $dayOfPresence = new DaysOfPresence();
-                $dayOfPresence->setDateOfPresence($referenceDate ->modify('+1 day'));
+                $dayOfPresence->setDateOfPresence($referenceDate->modify('+1 day'));
             }
 
             $dayOfPresence->setEdition($edition);
@@ -101,8 +100,6 @@ class EditionListener implements EventSubscriber
             $this->em->flush();
         }
     }
-
-
 
     public function getCurrentEdition()
     {
