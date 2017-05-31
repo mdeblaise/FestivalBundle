@@ -14,7 +14,7 @@ mmc_festival_guest_day:
     path:     /invites/{day}
     defaults: { _controller: mmc_festival.Controller.Guest:indexAction }
     requirements:
-        day: 'vendredi|samedi|dimanche'
+        day: 'lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche'
 
 mmc_festival_guest_view:
     path:     /invites/{id}
@@ -42,8 +42,7 @@ mmc_festival_activity_day:
     path:     /programme/{day}
     defaults: { _controller: mmc_festival.Controller.Activity:indexAction }
     requirements:
-        day: 'vendredi|samedi|dimanche'
-
+        day: 'lundi|mardi|mercredi|jeudi|vendredi|samedi|dimanche'
 
 mmc_festival_activity_univers:
     path:     /programme/{univers}
