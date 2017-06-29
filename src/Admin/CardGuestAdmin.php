@@ -7,6 +7,7 @@ use Greg0ire\Enum\Bridge\Symfony\Form\Type\EnumType;
 use MMC\CardBundle\Admin\DTOCardAdmin;
 use MMC\CardBundle\Form\Type\StatusValidationType;
 use MMC\FestivalBundle\Entity\DaysOfPresence;
+use MMC\FestivalBundle\Services\Edition\EditionProviderInterface;
 use MMC\FestivalBundle\Services\EnumUniversProviderAwareTrait;
 use MMC\SonataAdminBundle\Datagrid\DTOFieldDescription;
 use MMC\SonataAdminBundle\Form\Type\ImagePreviewType;
@@ -22,6 +23,8 @@ class CardGuestAdmin extends DTOCardAdmin
     protected $baseRoutePattern = 'invites';
 
     protected $uploadableManager;
+
+    protected $editionProvider;
 
     protected $datagridValues = [
         '_page' => 1,
@@ -103,9 +106,16 @@ class CardGuestAdmin extends DTOCardAdmin
                 'template' => 'MMCSonataAdminBundle:CRUD:show_raw.html.twig',
             ]],
             ['name' => 'guest_of_honor', 'type' => 'boolean'],
-            ['name' => 'this_friday', 'type' => 'boolean'],
-            ['name' => 'this_saturday', 'type' => 'boolean'],
-            ['name' => 'this_sunday', 'type' => 'boolean'],
+            ['name' => 'daysOfPresence', 'type' => 'entity', 'options' => [
+                'multiple' => true,
+                'class' => DaysOfPresence::class,
+                'expanded' => true,
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('d')
+                        ->andWhere('d.edition = :edition')
+                        ->setParameter('edition', $this->getSubject()->getEdition());
+                },
+            ]],
         ];
     }
 
@@ -141,13 +151,18 @@ class CardGuestAdmin extends DTOCardAdmin
             ['name' => 'this_friday', 'type' => 'checkbox',  'options' => ['required' => false]],
             ['name' => 'this_saturday', 'type' => 'checkbox',  'options' => ['required' => false]],
             ['name' => 'this_sunday', 'type' => 'checkbox',  'options' => ['required' => false]],
+
             ['name' => 'daysOfPresence', 'type' => 'entity', 'options' => [
                 'multiple' => true,
                 'class' => DaysOfPresence::class,
                 'expanded' => true,
                 'query_builder' => function (EntityRepository $er) {
+                    dump($this->editionProvider->getCurrentEdition());
+
                     return $er->createQueryBuilder('d')
-                        ->andWhere('d.edition = 1');
+                        ->andWhere('d.edition = :edition')
+                        ->setParameter('edition', $this->editionProvider->getCurrentEdition())
+                    ;
                 },
             ]],
         ];
@@ -248,5 +263,10 @@ class CardGuestAdmin extends DTOCardAdmin
         if ($draftItem->getFileCover()) {
             $this->uploadableManager->markEntityToUpload($draftItem, $draftItem->getFileCover(), 'cover');
         }
+    }
+
+    public function setEditionProvider(EditionProviderInterface $editionProvider)
+    {
+        $this->editionProvider = $editionProvider;
     }
 }

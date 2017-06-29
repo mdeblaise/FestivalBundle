@@ -43,6 +43,7 @@ services:
             - [ setModelManager, ['@mmc_card.admin.manager.card']]
             - [ setUploadableManager, ['@stof_doctrine_extensions.uploadable.manager']]
             - [ setEnumUniversProvider, ['@mmc_festival.univers.provider']]
+            - [ setEditionProvider, ['@mmc_festival.provider.edition']]
 
     mmc_festival.admin.card_exponent:
         class: 'MMC\FestivalBundle\Admin\CardExponentAdmin'

@@ -202,7 +202,10 @@
                 <source>name.limits</source>
                 <target>Limité à 30 caractères</target>
             </trans-unit>
-
+            <trans-unit id="daysOfPresence">
+                <source>daysOfPresence</source>
+                <target>Jour(s) de présence</target>
+            </trans-unit>
         </body>
     </file>
 </xliff>
