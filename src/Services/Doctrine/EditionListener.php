@@ -16,7 +16,7 @@ class EditionListener implements EventSubscriber
 
     public function getSubscribedEvents()
     {
-        return ['onFlush', 'prePersist', 'postPersist'];
+        return ['onFlush', 'prePersist', 'postPersist', 'postUpdate'];
     }
 
     public function onFlush(OnFlushEventArgs $args)
@@ -99,6 +99,89 @@ class EditionListener implements EventSubscriber
             $this->em->persist($dayOfPresence);
             $this->em->flush();
         }
+    }
+
+    public function postUpdate(LifecycleEventArgs $args)
+    {
+        $edition = $args->getObject();
+
+        if (!$edition instanceof Edition) {
+            return;
+        }
+
+        $this->em = $args->getEntityManager();
+
+        $currentDaysOfPresence = $edition->getDaysOfPresence()->getValues();
+        $festivalLength = $edition->getFestivalLength();
+        $referenceDate = clone $edition->getReferenceDate();
+        $newDaysOfPresence = [];
+
+        for ($i = 0; $i < $festivalLength; ++$i) {
+            if ($i == 0) {
+                $dayOfPresence = new DaysOfPresence();
+                $dayOfPresence->setDateOfPresence(clone $referenceDate);
+            } else {
+                $dayOfPresence = new DaysOfPresence();
+                $dayOfPresence->setDateOfPresence(clone $referenceDate->modify('+1 day'));
+            }
+            $dayOfPresence->setEdition($edition);
+            $newDaysOfPresence[] = $dayOfPresence;
+        }
+
+        $daysOfPresence = $this->diffDaysOfPresence($currentDaysOfPresence, $newDaysOfPresence);
+
+        if ($daysOfPresence === null) {
+            return;
+        }
+
+        foreach ($daysOfPresence['daysDeleted'] as $dayOfPresenceDeleted) {
+            $this->em->remove($dayOfPresenceDeleted);
+        }
+
+        foreach ($daysOfPresence['daysAdded'] as $dayOfPresenceAdded) {
+            $this->em->persist($dayOfPresenceAdded);
+        }
+
+        $this->em->flush();
+    }
+
+    public function diffDaysOfPresence(array $currentDaysOfPresence, array $newDaysOfPresence)
+    {
+        $days = [];
+        $daysDeleted = [];
+        $daysAdded = [];
+
+        foreach ($newDaysOfPresence as $newDayOfPresence) {
+            if (!$this->inDaysOfPresenceArray($newDayOfPresence, $currentDaysOfPresence)) {
+                $daysAdded[] = $newDayOfPresence;
+            }
+        }
+
+        foreach ($currentDaysOfPresence as $currentDayOfPresence) {
+            if (!$this->inDaysOfPresenceArray($currentDayOfPresence, $newDaysOfPresence)) {
+                $daysDeleted[] = $currentDayOfPresence;
+            }
+        }
+
+        $days['daysAdded'] = $daysAdded;
+        $days['daysDeleted'] = $daysDeleted;
+
+        if (empty($days['daysAdded']) && empty($days['daysDeleted'])) {
+            $days = null;
+        }
+
+        return $days;
+    }
+
+    public function inDaysOfPresenceArray($a, array $b)
+    {
+        foreach ($b as $c) {
+            if ((string) $a == (string) $c) {
+                return true;
+            }
+        }
+
+        return false;
     }
 
     public function getCurrentEdition()

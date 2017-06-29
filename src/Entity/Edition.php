@@ -62,6 +62,11 @@ class Edition
      */
     protected $active = false;
 
+    /**
+     * @ORM\OneToMany(targetEntity="MMC\FestivalBundle\Entity\DaysOfPresence", mappedBy="edition")
+     */
+    protected $daysOfPresence;
+
     public function __construct()
     {
     }
@@ -175,6 +180,24 @@ class Edition
     public function setActive($active)
     {
         $this->active = $active;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection
+     */
+    public function getDaysOfPresence()
+    {
+        return $this->daysOfPresence;
+    }
+
+    /**
+     * @param Collection $daysOfPresence
+     */
+    public function setDaysOfPresence($daysOfPresence)
+    {
+        $this->daysOfPresence = $daysOfPresence;
 
         return $this;
     }
