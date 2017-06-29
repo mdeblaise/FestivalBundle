@@ -102,7 +102,9 @@ class EditionAdmin extends AbstractAdmin
         $formMapper
             ->with('Detail')
                 ->add('name')
-                ->add('referenceDate', 'date')
+                ->add('referenceDate', 'sonata_type_date_picker', [
+                    'datepicker_use_button' => true,
+                ])
                 ->add('festivalLength')
                 ->add('preparationLength')
                 ->add('current')
